@@ -1,309 +1,212 @@
 <!doctype html>
-
 <html lang="fr" class="h-full">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   
-
   <title>Mariage d'Amir & Marina - 25 Juin 2026</title>
-
   <meta name="description" content="Nous sommes heureux de vous inviter à célébrer notre union.">
-
   
-
   <meta property="og:title" content="Mariage d'Amir & Marina - 25 Juin 2026">
-
   <meta property="og:description" content="Rejoignez-nous pour célébrer notre grand jour.">
-
   <meta property="og:url" content="https://amir913.github.io/MARIAGE-AMIR-MARINA/">
-
   <meta property="og:type" content="website">
-
   <meta property="og:image" content="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop">
 
-
-
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
   
-
   <style>
-
     .font-serif-elegant { font-family: 'Cormorant Garamond', serif; }
-
     .font-sans-elegant { font-family: 'Montserrat', sans-serif; }
-
     
-
-    /* Arrière-plan Zellige avec overlay sombre pour la lisibilité */
-
     body { 
-
       background-color: #0a192f; 
-
       color: #e2e8f0; 
-
       scroll-behavior: smooth;
-
       background-image: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://raw.githubusercontent.com/amir913/MARIAGE-AMIR-MARINA/main/zellige-marocain.webp');
-
       background-attachment: fixed;
-
       background-size: cover;
-
       background-position: center;
-
     }
-
-
 
     .gold-gradient {
-
       background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
-
       -webkit-background-clip: text;
-
       -webkit-text-fill-color: transparent;
-
     }
-
-
 
     .border-gold { border-color: rgba(212, 175, 55, 0.3); }
 
-
-
-    /* Coins décoratifs */
-
     .corner-decor {
-
       position: absolute;
-
       width: 100px;
-
       height: 100px;
-
       border: 2px solid transparent;
-
       opacity: 0.6;
-
       z-index: 20;
-
     }
-
     .top-left { top: 20px; left: 20px; border-top-color: #d4af37; border-left-color: #d4af37; border-radius: 20px 0 0 0; }
-
     .bottom-right { bottom: 20px; right: 20px; border-bottom-color: #d4af37; border-right-color: #d4af37; border-radius: 0 0 20px 0; }
 
-
-
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
     .animate-fade-in { animation: fadeInUp 1.2s ease-out forwards; }
 
-
-
-    /* Bouton RSVP personnalisé */
-
     .btn-rsvp {
-
       background: linear-gradient(45deg, #bf953f, #d4af37);
-
       transition: all 0.4s ease;
-
       color: #0a192f;
-
       font-weight: bold;
-
     }
-
     .btn-rsvp:hover {
-
       transform: scale(1.05);
-
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-
     }
-
   </style>
-
 </head>
-
 <body class="h-full font-sans-elegant">
 
-
-
   <div id="app-wrapper" class="w-full h-full overflow-auto">
-
     
-
     <section class="relative min-h-screen flex items-center justify-center text-center px-6 border-b border-gold/20">
-
       <div class="corner-decor top-left"></div>
-
       <div class="corner-decor bottom-right"></div>
 
-
-
       <div class="z-10 bg-[#0a192f]/40 backdrop-blur-sm p-8 rounded-3xl border border-white/5">
-
         <div class="mb-6 flex justify-center opacity-90">
-
             <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
-
                 <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-
                 <path d="M19 3l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5L19 3z"></path>
-
             </svg>
-
         </div>
-
         <p class="text-xs tracking-[0.6em] uppercase mb-4 animate-fade-in text-[#d4af37]">Bismillah - Save the Date</p>
-
         <h1 class="font-serif-elegant text-6xl md:text-8xl mb-6 animate-fade-in gold-gradient">Amir & Marina</h1>
-
         <div class="h-px w-40 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-6"></div>
-
         <p class="font-serif-elegant text-2xl italic mb-12 animate-fade-in text-gray-200">Se disent "Oui" le 25 Juin 2026</p>
-
         
-
-        <a href="#programme" class="inline-block px-10 py-3 border border-[#d4af37] text-[#d4af37] uppercase tracking-widest text-xs hover:bg-[#d4af37] hover:text-[#0a192f] transition-all duration-500">Découvrir le programme</a>
-
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#programme" class="w-full sm:w-auto px-8 py-3 border border-[#d4af37] text-[#d4af37] uppercase tracking-widest text-xs hover:bg-[#d4af37]/10 transition-all duration-500">
+            Découvrir le programme
+          </a>
+          <a href="#rsvp" class="w-full sm:w-auto px-8 py-3 bg-[#d4af37] text-[#0a192f] font-bold uppercase tracking-widest text-xs hover:bg-[#fcf6ba] transition-all duration-500 shadow-lg">
+            Confirmer ma présence
+          </a>
+        </div>
       </div>
-
     </section>
 
-
+    <section class="py-16 bg-[#0a192f]/40 border-b border-gold/10">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h3 class="text-[#d4af37] text-xs uppercase tracking-[0.4em] mb-8">Le grand jour approche...</h3>
+        <div id="countdown" class="grid grid-cols-4 gap-4 font-serif-elegant text-[#d4af37]">
+          <div class="bg-[#0a192f]/60 p-4 rounded-xl border border-gold/20">
+            <span id="days" class="text-3xl md:text-5xl block text-white">00</span>
+            <span class="text-[10px] uppercase tracking-widest opacity-70">Jours</span>
+          </div>
+          <div class="bg-[#0a192f]/60 p-4 rounded-xl border border-gold/20">
+            <span id="hours" class="text-3xl md:text-5xl block text-white">00</span>
+            <span class="text-[10px] uppercase tracking-widest opacity-70">Heures</span>
+          </div>
+          <div class="bg-[#0a192f]/60 p-4 rounded-xl border border-gold/20">
+            <span id="minutes" class="text-3xl md:text-5xl block text-white">00</span>
+            <span class="text-[10px] uppercase tracking-widest opacity-70">Min</span>
+          </div>
+          <div class="bg-[#0a192f]/60 p-4 rounded-xl border border-gold/20">
+            <span id="seconds" class="text-3xl md:text-5xl block text-white">00</span>
+            <span class="text-[10px] uppercase tracking-widest opacity-70">Sec</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="programme" class="py-24 bg-[#0a192f]/90 backdrop-blur-md px-6">
-
       <div class="max-w-4xl mx-auto text-center">
-
         <h2 class="font-serif-elegant text-4xl mb-16 gold-gradient uppercase tracking-widest">Le Programme</h2>
-
         
-
         <div class="grid md:grid-cols-2 gap-12">
-
           <div class="p-10 border border-gold rounded-2xl bg-[#0a192f]/60 relative overflow-hidden group">
-
             <div class="text-[#d4af37] mb-6 flex justify-center">
-
                 <svg width="45" height="45" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-
                     <path d="M3 21h18M3 10h18M5 10V7a3 3 0 013-3h8a3 3 0 013 3v3M9 21V14h6v7"></path>
-
                 </svg>
-
             </div>
-
             <h3 class="font-serif-elegant text-3xl mb-3 text-white">Cérémonie Civile</h3>
-
             <p class="text-[#d4af37] font-bold text-xl mb-4 tracking-tighter">14h00</p>
-
             <p class="text-sm text-gray-300 leading-relaxed">3 Rue du Petit Ballainvilliers<br>91160 Ballainvilliers</p>
-
-            <a href="https://maps.google.com/?q=3+Rue+du+Petit+Ballainvilliers+91160+Ballainvilliers" target="_blank" class="inline-block mt-6 text-[10px] border-b border-[#d4af37] pb-1 tracking-[0.3em] text-[#d4af37] hover:text-white hover:border-white transition-all uppercase">Itinéraire</a>
-
+            <a href="https://www.google.com/maps/search/?api=1&query=3+Rue+du+Petit+Ballainvilliers+91160+Ballainvilliers" target="_blank" class="inline-block mt-6 text-[10px] border-b border-[#d4af37] pb-1 tracking-[0.3em] text-[#d4af37] hover:text-white hover:border-white transition-all uppercase">Itinéraire</a>
           </div>
-
-
 
           <div class="p-10 border border-gold rounded-2xl bg-[#0a192f]/60 relative overflow-hidden group">
-
             <div class="text-[#d4af37] mb-6 flex justify-center">
-
                 <svg width="45" height="45" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-
                 </svg>
-
             </div>
-
             <h3 class="font-serif-elegant text-3xl mb-3 text-white">Réception & Dîner</h3>
-
             <p class="text-[#d4af37] font-bold text-xl mb-4 tracking-tighter">18h00</p>
-
             <p class="text-sm text-gray-300 leading-relaxed">14 Rue Gustave Madiot<br>91070 Bondoufle</p>
-
-            <a href="https://maps.google.com/?q=14+Rue+Gustave+Madiot+91070+Bondoufle" target="_blank" class="inline-block mt-6 text-[10px] border-b border-[#d4af37] pb-1 tracking-[0.3em] text-[#d4af37] hover:text-white hover:border-white transition-all uppercase">Itinéraire</a>
-
+            <a href="https://www.google.com/maps/search/?api=1&query=14+Rue+Gustave+Madiot+91070+Bondoufle" target="_blank" class="inline-block mt-6 text-[10px] border-b border-[#d4af37] pb-1 tracking-[0.3em] text-[#d4af37] hover:text-white hover:border-white transition-all uppercase">Itinéraire</a>
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-
 
     <section id="rsvp" class="py-24 px-6 bg-[#0a192f]/80 backdrop-blur-sm">
-
       <div class="max-w-3xl mx-auto text-center">
-
         <h2 class="font-serif-elegant text-5xl mb-6 gold-gradient">RSVP</h2>
-
         <p class="mb-2 text-gray-300 italic font-serif-elegant text-xl">Nous avons hâte de célébrer avec vous</p>
-
         <p class="mb-12 font-bold text-[#d4af37] uppercase tracking-[0.3em] text-xs">Réponse souhaitée avant le 20 Mars 2026</p>
-
         
-
-        <div class="p-12 border border-gold rounded-3xl bg-[#0d213d]/80">
-
+        <div class="p-12 border border-gold rounded-3xl bg-[#0d213d]/80 shadow-2xl">
           <p class="text-gray-200 mb-8 px-6">Pour confirmer votre présence, merci de cliquer sur le bouton ci-dessous :</p>
-
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxLdcRuehVpt4lA01f82S7APLaTTzxXrsu-JIwsVMS8ou-cw/viewform" 
-
              target="_blank" 
-
              class="btn-rsvp inline-block px-12 py-4 rounded-full uppercase tracking-widest text-sm transition-all shadow-lg">
-
             Confirmer ma présence
-
           </a>
-
         </div>
-
       </div>
-
     </section>
 
-
-
     <footer class="py-16 text-center border-t border-gold/10 bg-[#0a192f]/95">
-
       <div class="mb-4 opacity-40 flex justify-center gap-4">
-
           <div class="h-px w-12 bg-[#d4af37] self-center"></div>
-
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-
           <div class="h-px w-12 bg-[#d4af37] self-center"></div>
-
       </div>
-
       <p class="font-serif-elegant text-2xl gold-gradient tracking-widest">Amir & Marina</p>
-
       <p class="text-[10px] tracking-[0.5em] mt-4 uppercase text-gray-500">25 Juin 2026</p>
-
     </footer>
-
-
 
   </div>
 
-</body>
+  <script>
+    // Configuration de la date du mariage
+    const weddingDate = new Date('June 25, 2026 14:00:00').getTime();
 
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = d.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+
+      if (distance < 0) {
+        clearInterval(interval);
+        document.getElementById('countdown').innerHTML = "<p class='gold-gradient text-3xl font-serif-elegant w-full'>C'est le grand jour !</p>";
+      }
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Appel initial pour éviter le délai d'une seconde
+  </script>
+
+</body>
 </html>
