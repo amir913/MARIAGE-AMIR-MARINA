@@ -3,74 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Mariage d'Amir & Marina - 25 Juin 2026</title>
-  <meta name="description" content="Nous sommes heureux de vous inviter à célébrer notre union.">
-  
-  <meta property="og:title" content="Mariage d'Amir & Marina - 25 Juin 2026">
-  <meta property="og:description" content="Rejoignez-nous pour célébrer notre grand jour.">
-  <meta property="og:url" content="https://amir913.github.io/MARIAGE-AMIR-MARINA/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop">
-
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <title>Digital Wedding Studio | Créations d'Exceptions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
   
   <style>
-    .font-serif-elegant { font-family: 'Cormorant Garamond', serif; }
-    .font-sans-elegant { font-family: 'Montserrat', sans-serif; }
-    
-    /* Fond Bleu Nuit Oriental */
-    body { background-color: #0a192f; color: #e2e8f0; scroll-behavior: smooth; }
-
-    /* Motif Moucharabieh Géométrique */
-    .bg-pattern {
-      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l10 30 30 10-30 10-10 30-10-30-30-10 30-10z' fill='%23d4af37' fill-opacity='0.07'/%3E%3C/svg%3E");
+    :root {
+      --emerald-dark: #042f2e;
+      --gold: #b38728;
+      --oriental-blue: #0a192f;
     }
 
+    body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #1a1a1a; scroll-behavior: smooth; }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* Dégradé Or Premium */
     .gold-gradient {
-      background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .border-gold { border-color: rgba(212, 175, 55, 0.3); }
+    /* Effet Glassmorphism pour la Nav */
+    .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-blur: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); }
 
-    /* Coins décoratifs */
-    .corner-decor {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      border: 2px solid transparent;
-      opacity: 0.4;
-    }
-    .top-left { top: 20px; left: 20px; border-top-color: #d4af37; border-left-color: #d4af37; border-radius: 20px 0 0 0; }
-    .bottom-right { bottom: 20px; right: 20px; border-bottom-color: #d4af37; border-right-color: #d4af37; border-radius: 0 0 20px 0; }
+    /* Cartes de modèles */
+    .card-zoom:hover img { transform: scale(1.1); }
+    .card-zoom img { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
 
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .animate-fade-in { animation: fadeInUp 1.2s ease-out forwards; }
-    
-    /* Style du bouton RSVP */
-    .btn-rsvp {
-      background: linear-gradient(45deg, #bf953f, #d4af37);
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    /* Style spécifique pour le modèle Oriental dans la démo */
+    .bg-oriental {
+      background-color: var(--oriental-blue);
+      background-image: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('https://raw.githubusercontent.com/amir913/MARIAGE-AMIR-MARINA/main/zellige-marocain.webp');
+      background-size: cover;
     }
-    .btn-rsvp:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+
+    .btn-gold {
+      background: linear-gradient(135deg, #b38728, #d4af37);
+      transition: all 0.3s ease;
     }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(179, 135, 40, 0.3); }
   </style>
 </head>
-<body class="h-full font-sans-elegant bg-pattern">
+<body class="antialiased">
 
-  <div id="app-wrapper" class="w-full h-full overflow-auto">
-    
-    <section class="relative min-h-screen flex items-center justify-center text-center px-6 border-b border-gold/20">
-      <div class="corner-decor top-left"></div>
-      <div class="corner-decor bottom-right"></div>
+  <nav class="fixed w-full z-50 glass-nav py-4 px-10 flex justify-between items-center">
+    <div class="font-serif text-2xl font-bold tracking-tighter text-emerald-900">DW<span class="text-gold font-light">.</span></div>
+    <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.3em] font-semibold italic">
+      <a href="#concept" class="hover:text-gold transition">Le Concept</a>
+      <a href="#modeles" class="hover:text-gold transition">Nos Modèles</a>
+      <a href="#tarifs" class="hover:text-gold transition">Tarifs</a>
+    </div>
+    <button class="text-[9px] bg-emerald-900 text-white px-6 py-2 rounded-full uppercase tracking-widest hover:bg-gold transition">Contact</button>
+  </nav>
 
-      <div class="z-10">
-        <div class="mb-6 flex justify-center opacity-80">
-            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
-                <path d="M12 3a6 6
+  <section class="pt-40 pb-20 px-6 text-center bg-[#fdfbf7]">
+    <div class="max-w-4xl mx-auto">
+      <span class="text-gold text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold">L'invitation réinventée</span>
+      <h1 class="font-serif text-6xl md:text-8xl mb-8 leading-tight">L'élégance à portée <br><span class="italic gold-gradient">de clic.</span></h1>
+      <p class="text-gray-500 max-w-xl mx-auto mb-12 text-sm leading-relaxed">Sublimez l'annonce de votre union avec un faire-part digital interactif, musical et sur-mesure.</p>
+      <a href="#modeles" class="btn-gold text-white px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest">Découvrir la collection</a>
+    </div>
+  </section>
+
+  <section id="modeles" class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+        <h2 class="font-serif text-5xl italic">La Collection</h2>
+        <p class="text-gray-400 text-[10px] uppercase tracking-widest">Nos créations les plus prisées</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-12">
+        
+        <div class="group">
+          <div class="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl bg-oriental flex flex-col items-center justify-center p-8 border border-gold/20">
+             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1" class="z-10 mb-6 opacity-80">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                <path d="M19 3l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5L19 3z"></path>
+             </svg>
+             <h3 class="font-serif text-4xl text-white z-10 gold-gradient">Nuit d'Orient</h3>
+             <p class="text-white/60 text-[10px] uppercase tracking-[0.3em] mt-4 z-10">Zellige • Bleu Nuit • Or</p>
+             <div class="absolute bottom-10 z-10 opacity-0 group-hover:opacity-100 transition duration-500 transform translate-y-4 group-hover:translate-y-0">
+                <button class="bg-white text-emerald-900 px-8 py-3 rounded-full text-[9px] font-bold uppercase tracking-widest">Voir la démo</button>
+             </div>
+          </div>
+          <p class="mt-6 text-sm text-gray-500 italic text-center">"Une invitation mystique et traditionnelle, sublimée par les motifs zelliges."</p>
+        </div>
+
+        <div class="group">
+          <div class="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl bg-gray-50 card-zoom">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=600" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0">
+            <div class="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition duration-500"></div>
+            <div class="absolute inset-x-0 bottom-0 p-8 text-center bg-gradient-to-t from-black/80 to-transparent">
+              <h3 class="font-serif text-4xl text-white">Royal Garden</h3>
+              <p class="text-gold text-[10px] uppercase tracking-[0.3em] mt-2">Floral • Émeraude • Or</p>
+            </div>
+          </div>
+          <p class="mt-6 text-sm text-gray-500 italic text-center">"L'harmonie parfaite entre la nature et le luxe."</p>
+        </div>
+
+        <div class="group">
+          <div class="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl bg-gray-100 flex flex-col items-center justify-center border border-gray-100">
+             <h3 class="font-serif text-5xl text-gray-800 italic">Signature</h3>
+             <p class="text-gray-400 text-[10px] uppercase tracking-[0.3em] mt-4">Minimalisme • Moderne</p>
+             <div class="absolute bottom-10">
+                <button class="border border-gray-300 px-8 py-3 rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition">Bientôt disponible</button>
+             </div>
+          </div>
+          <p class="mt-6 text-sm text-gray-500 italic text-center">"Le luxe de l'épure pour les amoureux du design moderne."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="tarifs" class="py-24 bg-gray-50 px-6">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-4xl text-center mb-16 tracking-widest uppercase text-emerald-900">Investissement</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
+                <h4 class="font-serif text-2xl italic mb-4">L'Essentiel</h4>
+                <div class="text-4xl font-light mb-8 italic">79€</div>
+                <ul class="text-[10px] uppercase tracking-widest text-gray-400 space-y-4 mb-10">
+                    <li>Modèle de collection</li>
+                    <li>Lancement Musique Auto</li>
+                    <li>Gestion RSVP simple</li>
+                </ul>
+                <button class="w-full py-4 border border-emerald-900 text-emerald-900 text-[9px] font-bold uppercase tracking-widest hover:bg-emerald-900 hover:text-white transition">Sélectionner</button>
+            </div>
+            <div class="bg-white p-12 rounded-3xl shadow-2xl border-2 border-gold text-center relative">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white text-[8px] px-4 py-1 rounded-full uppercase font-bold tracking-widest">Le plus prisé</div>
+                <h4 class="font-serif text-2xl italic mb-4">Prestige</h4>
+                <div class="text-4xl font-light mb-8 italic">149€</div>
+                <ul class="text-[10px] uppercase tracking-widest text-emerald-800 font-bold space-y-4 mb-10">
+                    <li>Personnalisation Totale</li>
+                    <li>Galerie Photos</li>
+                    <li>RSVP Illimité</li>
+                </ul>
+                <button class="w-full py-4 btn-gold text-white text-[9px] font-bold uppercase tracking-widest">Sélectionner</button>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="py-20 bg-emerald-900 text-white text-center">
+    <div class="font-serif text-4xl mb-4 gold-gradient">Digital Wedding Studio</div>
+    <div class="h-px w-20 bg-gold/30 mx-auto mb-10"></div>
+    <p class="text-[10px] tracking-[0.5em] uppercase opacity-50">Basé à Paris • Service Monde Entier</p>
+  </footer>
+
+</body>
+</html>
