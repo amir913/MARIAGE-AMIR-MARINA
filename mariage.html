@@ -12,6 +12,7 @@
       --emerald-dark: #042f2e;
       --gold: #b38728;
       --oriental-blue: #0a192f;
+      --cream: #fdfbf7;
     }
 
     body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #1a1a1a; scroll-behavior: smooth; }
@@ -43,6 +44,8 @@
       transition: all 0.3s ease;
     }
     .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(179, 135, 40, 0.3); }
+    
+    .bg-cream { background-color: var(--cream); }
   </style>
 </head>
 <body class="antialiased">
@@ -62,13 +65,70 @@
       <span class="text-gold text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold">L'invitation réinventée</span>
       <h1 class="font-serif text-6xl md:text-8xl mb-8 leading-tight">L'élégance à portée <br><span class="italic gold-gradient">de clic.</span></h1>
       <p class="text-gray-500 max-w-xl mx-auto mb-12 text-sm leading-relaxed">Sublimez l'annonce de votre union avec un faire-part digital interactif, musical et sur-mesure.</p>
-      <a href="#modeles" class="btn-gold text-white px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest">Découvrir la collection</a>
+      <a href="#modeles" class="btn-gold text-white px-12 py-5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">Découvrir la collection</a>
+    </div>
+  </section>
+
+  <section id="concept" class="py-24 px-6 bg-white overflow-hidden border-y border-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        
+        <div class="space-y-8">
+          <span class="text-gold text-[10px] uppercase tracking-[0.5em] font-bold">L'Expérience Digital Wedding</span>
+          <h2 class="font-serif text-5xl italic leading-tight text-emerald-900">Une invitation qui vit avec vous.</h2>
+          
+          <div class="space-y-8">
+            <div class="flex gap-6">
+              <span class="font-serif text-2xl text-gold italic">01.</span>
+              <div>
+                <h4 class="font-semibold text-xs uppercase tracking-[0.2em] mb-2 text-emerald-900">Immersion Émotionnelle</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Dès l'ouverture, vos invités sont transportés par votre mélodie. Un compte à rebours élégant installe la magie du grand jour.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-6">
+              <span class="font-serif text-2xl text-gold italic">02.</span>
+              <div>
+                <h4 class="font-semibold text-xs uppercase tracking-[0.2em] mb-2 text-emerald-900">Logistique Simplifiée</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">GPS intégré pour guider vos proches, confirmations RSVP en temps réel et programme détaillé : tout est à portée de main.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-6">
+              <span class="font-serif text-2xl text-gold italic">03.</span>
+              <div>
+                <h4 class="font-semibold text-xs uppercase tracking-[0.2em] mb-2 text-emerald-900">Héritage Moderne</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Une solution éco-responsable, instantanée et sans frontières. Partagez votre bonheur en un clic via WhatsApp, SMS ou Email.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="bg-cream p-6 rounded-[2.5rem] border border-gold/10 shadow-2xl">
+            <div class="bg-emerald-900 h-[450px] rounded-[2rem] flex items-center justify-center text-center p-8 relative overflow-hidden shadow-inner">
+              <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/gold-dust.png')]"></div>
+              <div class="z-10 animate-pulse">
+                <p class="text-gold text-[8px] uppercase tracking-[0.4em] mb-4">Aperçu Mobile</p>
+                <h3 class="font-serif text-4xl text-white italic mb-4">Amir & Marina</h3>
+                <div class="w-12 h-px bg-gold/50 mx-auto mb-4"></div>
+                <p class="text-white/60 text-[9px] uppercase tracking-widest italic font-light">Lancement de la musique...</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 -right-4 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:block">
+            <p class="text-emerald-900 font-bold text-2xl leading-none">100%</p>
+            <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1 font-semibold">Interactif</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <section id="modeles" class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 border-b border-gray-100 pb-8">
         <h2 class="font-serif text-5xl italic">La Collection</h2>
         <p class="text-gray-400 text-[10px] uppercase tracking-widest">Nos créations les plus prisées</p>
       </div>
@@ -76,13 +136,13 @@
       <div class="grid md:grid-cols-3 gap-12">
         
         <div class="group">
-          <div class="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl bg-oriental flex flex-col items-center justify-center p-8 border border-gold/20">
+          <div class="relative h-[500px] overflow-hidden rounded-2xl shadow-2xl bg-oriental flex flex-col items-center justify-center p-8 border border-gold/20 transition-all duration-500 hover:shadow-gold/20">
              <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1" class="z-10 mb-6 opacity-80">
                 <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                 <path d="M19 3l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5L19 3z"></path>
              </svg>
-             <h3 class="font-serif text-4xl text-white z-10 gold-gradient">Nuit d'Orient</h3>
+             <h3 class="font-serif text-4xl text-white z-10 gold-gradient text-center">Nuit d'Orient</h3>
              <p class="text-white/60 text-[10px] uppercase tracking-[0.3em] mt-4 z-10">Zellige • Bleu Nuit • Or</p>
              <div class="absolute bottom-10 z-10 opacity-0 group-hover:opacity-100 transition duration-500 transform translate-y-4 group-hover:translate-y-0">
                 <button class="bg-white text-emerald-900 px-8 py-3 rounded-full text-[9px] font-bold uppercase tracking-widest">Voir la démo</button>
@@ -123,23 +183,25 @@
         <h2 class="font-serif text-4xl text-center mb-16 tracking-widest uppercase text-emerald-900">Investissement</h2>
         <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
-                <h4 class="font-serif text-2xl italic mb-4">L'Essentiel</h4>
-                <div class="text-4xl font-light mb-8 italic">79€</div>
+                <h4 class="font-serif text-2xl italic mb-4 text-gray-800">L'Essentiel</h4>
+                <div class="text-4xl font-light mb-8 italic text-emerald-900">79€</div>
                 <ul class="text-[10px] uppercase tracking-widest text-gray-400 space-y-4 mb-10">
                     <li>Modèle de collection</li>
                     <li>Lancement Musique Auto</li>
                     <li>Gestion RSVP simple</li>
+                    <li>Validité 6 mois</li>
                 </ul>
                 <button class="w-full py-4 border border-emerald-900 text-emerald-900 text-[9px] font-bold uppercase tracking-widest hover:bg-emerald-900 hover:text-white transition">Sélectionner</button>
             </div>
             <div class="bg-white p-12 rounded-3xl shadow-2xl border-2 border-gold text-center relative">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white text-[8px] px-4 py-1 rounded-full uppercase font-bold tracking-widest">Le plus prisé</div>
-                <h4 class="font-serif text-2xl italic mb-4">Prestige</h4>
-                <div class="text-4xl font-light mb-8 italic">149€</div>
+                <h4 class="font-serif text-2xl italic mb-4 text-gray-800">Prestige</h4>
+                <div class="text-4xl font-light mb-8 italic text-gold">149€</div>
                 <ul class="text-[10px] uppercase tracking-widest text-emerald-800 font-bold space-y-4 mb-10">
-                    <li>Personnalisation Totale</li>
-                    <li>Galerie Photos</li>
-                    <li>RSVP Illimité</li>
+                    <li>Personnalisation Couleurs</li>
+                    <li>Galerie Photos Illimitée</li>
+                    <li>RSVP & Dashboard dédié</li>
+                    <li>Hébergement à vie</li>
                 </ul>
                 <button class="w-full py-4 btn-gold text-white text-[9px] font-bold uppercase tracking-widest">Sélectionner</button>
             </div>
@@ -150,7 +212,11 @@
   <footer class="py-20 bg-emerald-900 text-white text-center">
     <div class="font-serif text-4xl mb-4 gold-gradient">Digital Wedding Studio</div>
     <div class="h-px w-20 bg-gold/30 mx-auto mb-10"></div>
-    <p class="text-[10px] tracking-[0.5em] uppercase opacity-50">Basé à Paris • Service Monde Entier</p>
+    <p class="text-[10px] tracking-[0.5em] uppercase opacity-50 mb-4">Basé à Paris • Service Monde Entier</p>
+    <div class="flex justify-center gap-6 text-[9px] uppercase tracking-widest opacity-40">
+        <a href="#" class="hover:text-gold transition">Instagram</a>
+        <a href="#" class="hover:text-gold transition">WhatsApp</a>
+    </div>
   </footer>
 
 </body>
