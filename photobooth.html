@@ -1,826 +1,408 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magic Box Events – Photobooth Événementiel</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #C8963C;
-    --gold-light: #E8B860;
-    --gold-dark: #A07020;
-    --cream: #F5F0E8;
-    --cream-dark: #EDE6D8;
-    --dark: #1A1A14;
-    --text: #2C2C22;
-    --wood: #8B5E2A;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--cream);
-    color: var(--text);
-    font-family: 'Jost', sans-serif;
-    overflow-x: hidden;
-  }
-
-  /* ── TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    background: rgba(245, 240, 232, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200, 150, 60, 0.2);
-  }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--dark);
-    letter-spacing: 0.05em;
-  }
-
-  .nav-logo span { color: var(--gold); }
-
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--gold); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    padding-top: 80px;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px 80px 80px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-tag {
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-  }
-
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 6vw, 5rem);
-    line-height: 1.05;
-    font-weight: 300;
-    color: var(--dark);
-    margin-bottom: 30px;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #5A5A48;
-    max-width: 420px;
-    margin-bottom: 50px;
-    font-weight: 300;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .btn-primary {
-    background: var(--gold);
-    color: #fff;
-    padding: 16px 36px;
-    border: none;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s, transform 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--gold-dark);
-    transform: translateY(-2px);
-  }
-
-  .btn-outline {
-    color: var(--gold);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: gap 0.3s;
-  }
-
-  .btn-outline:hover { gap: 14px; }
-
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-    background: var(--dark);
-  }
-
-  .hero-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(200,150,60,0.15) 0%, transparent 60%);
-  }
-
-  .hero-img-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-    color: rgba(200,150,60,0.5);
-  }
-
-  .camera-icon {
-    width: 120px;
-    height: 120px;
-    opacity: 0.4;
-  }
-
-  .hero-badge {
-    position: absolute;
-    bottom: 60px;
-    left: -20px;
-    background: var(--gold);
-    color: #fff;
-    padding: 20px 28px;
-    z-index: 10;
-  }
-
-  .hero-badge-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1;
-    display: block;
-  }
-
-  .hero-badge-text {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    opacity: 0.9;
-  }
-
-  /* ── DECORATIVE LINES ── */
-  .deco-line {
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    position: absolute;
-  }
-
-  /* ── SECTION TITLE ── */
-  .section-title {
-    text-align: center;
-    margin-bottom: 70px;
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .section-title h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 300;
-    color: var(--dark);
-    line-height: 1.2;
-  }
-
-  .section-title h2 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  /* ── FEATURES ── */
-  .features {
-    padding: 120px 80px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(200,150,60,0.15);
-  }
-
-  .feature-card {
-    background: var(--cream);
-    padding: 50px 40px;
-    transition: background 0.3s;
-  }
-
-  .feature-card:hover {
-    background: var(--cream-dark);
-  }
-
-  .feature-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 24px;
-    color: var(--gold);
-  }
-
-  .feature-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 14px;
-  }
-
-  .feature-desc {
-    font-size: 0.88rem;
-    line-height: 1.8;
-    color: #5A5A48;
-    font-weight: 300;
-  }
-
-  /* ── FORMULES ── */
-  .formules {
-    padding: 120px 80px;
-    background: var(--dark);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .formules::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,150,60,0.08) 0%, transparent 70%);
-  }
-
-  .formules .section-title h2 { color: var(--cream); }
-  .formules .section-label { color: var(--gold-light); }
-
-  .formules-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .formule-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(200,150,60,0.15);
-    padding: 50px 40px;
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s, border-color 0.3s;
-  }
-
-  .formule-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--gold);
-  }
-
-  .formule-card.featured {
-    background: rgba(200,150,60,0.1);
-    border-color: var(--gold);
-  }
-
-  .formule-badge {
-    position: absolute;
-    top: -14px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold);
-    color: #fff;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    font-weight: 500;
-  }
-
-  .formule-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--gold-light);
-    margin-bottom: 20px;
-  }
-
-  .formule-impressions {
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 30px;
-  }
-
-  .formule-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--cream);
-    line-height: 1;
-  }
-
-  .formule-price sup {
-    font-size: 1.5rem;
-    vertical-align: top;
-    margin-top: 8px;
-    display: inline-block;
-  }
-
-  .formule-sep {
-    width: 40px;
-    height: 1px;
-    background: rgba(200,150,60,0.4);
-    margin: 30px auto;
-  }
-
-  .formule-cta {
-    display: inline-block;
-    border: 1px solid rgba(200,150,60,0.5);
-    color: var(--gold-light);
-    padding: 12px 28px;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.3s, border-color 0.3s;
-  }
-
-  .formule-cta:hover, .formule-card.featured .formule-cta {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #fff;
-  }
-
-  /* ── SUPPLEMENTS ── */
-  .supplements {
-    padding: 100px 80px;
-    background: var(--cream-dark);
-    z-index: 1;
-    position: relative;
-  }
-
-  .supplements-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .sep-v {
-    background: rgba(200,150,60,0.3);
-    align-self: stretch;
-  }
-
-  .supp-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 30px;
-  }
-
-  .supp-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .supp-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    font-size: 0.88rem;
-    color: #4A4A38;
-    line-height: 1.5;
-  }
-
-  .supp-list li::before {
-    content: '+';
-    color: var(--gold);
-    font-weight: 600;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .supp-list strong { color: var(--dark); }
-
-  /* ── CONTACT ── */
-  .contact {
-    padding: 120px 80px;
-    z-index: 1;
-    position: relative;
-    text-align: center;
-  }
-
-  .contact-inner {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 60px;
-    text-align: left;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 24px;
-    border: 1px solid rgba(200,150,60,0.2);
-    transition: border-color 0.3s;
-  }
-
-  .contact-item:hover { border-color: var(--gold); }
-
-  .contact-item-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: #fff;
-    font-size: 1rem;
-  }
-
-  .contact-item-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 4px;
-  }
-
-  .contact-item-value {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--dark);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--dark);
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 40px 80px;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    z-index: 1;
-    position: relative;
-  }
-
-  footer span { color: var(--gold); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-up {
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards;
-  }
-
-  .fade-up:nth-child(1) { animation-delay: 0.1s; }
-  .fade-up:nth-child(2) { animation-delay: 0.25s; }
-  .fade-up:nth-child(3) { animation-delay: 0.4s; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-
-    .hero-left { padding: 100px 24px 60px; }
-
-    .hero-right {
-      height: 300px;
-    }
-
-    .features, .formules, .supplements, .contact {
-      padding: 80px 24px;
-    }
-
-    .features-grid, .formules-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .supplements-inner {
-      grid-template-columns: 1fr;
-    }
-
-    .sep-v { display: none; }
-
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Box Events – Photobooth Événementiel Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C8963C;
+            --gold-light: #E8B860;
+            --gold-dark: #A07020;
+            --cream: #FDFBF8;
+            --cream-dark: #F5F0E8;
+            --dark: #1A1A14;
+            --text: #2C2C22;
+            --text-light: #5A5A48;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Jost', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── GRAIN TEXTURE ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(253, 251, 248, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(200, 150, 60, 0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            padding-top: 80px;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 10% 80px 12%;
+        }
+
+        .hero-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 8vw, 5.5rem);
+            line-height: 1;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+        h1 em { font-style: italic; color: var(--gold); }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 480px;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            background: var(--dark);
+            color: #fff;
+            padding: 18px 40px;
+            border: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(200, 150, 60, 0.3);
+        }
+
+        .hero-right {
+            background: var(--dark);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(200,150,60,0.1), transparent);
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 50px; left: -40px;
+            background: var(--gold);
+            color: white;
+            padding: 30px;
+            z-index: 10;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.2);
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 120px 10%; position: relative; }
+        
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-label { 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            letter-spacing: 0.3em; 
+            font-size: 0.7rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+        }
+
+        /* ── FEATURES ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            padding: 60px 40px;
+            background: white;
+            border: 1px solid rgba(200,150,60,0.1);
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+        .feature-icon { color: var(--gold); margin-bottom: 30px; width: 50px; }
+
+        /* ── FORMULES ── */
+        .formules { background: var(--dark); color: white; }
+        .formules h2 { color: white; }
+        .formules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .formule-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 60px 40px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .formule-card.featured {
+            border-color: var(--gold);
+            background: rgba(200, 150, 60, 0.05);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+        .formule-price { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 4rem; 
+            margin: 20px 0; 
+            color: var(--gold-light);
+        }
+
+        /* ── CONTACT ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            background: var(--cream-dark);
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        .contact-item:hover { background: var(--gold); color: white; }
+
+        /* ── ANIMATIONS ── */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        [data-reveal].visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-right { height: 400px; order: -1; }
+            .features-grid, .formules-grid { grid-template-columns: 1fr; }
+            .formule-card.featured { transform: scale(1); }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo"><span>Magic</span> Box Events</div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#formules">Formules</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="tel:0686011346" class="btn-primary" style="padding:12px 24px;font-size:0.72rem;">Réserver</a>
+    <a href="#" class="nav-logo"><span>Magic</span> Box Events</a>
+    <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#formules">Formules</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:0686011346" class="btn-primary" style="padding:12px 25px;">Réserver</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-tag">Particuliers & Professionnels</p>
-    <h1 class="fade-up">Des souvenirs<br><em>instantanés</em><br>pour vos événements</h1>
-    <p class="hero-sub fade-up">Location de photobooth événementiel haut de gamme – mariages, soirées d'entreprise, anniversaires, salons. Impressions sur place, galerie en ligne.</p>
-    <div class="hero-cta fade-up">
-      <a href="#formules" class="btn-primary">Voir les formules</a>
-      <a href="#contact" class="btn-outline">Nous contacter →</a>
+    <div class="hero-left">
+        <p class="hero-tag">Expérience Premium</p>
+        <h1 data-reveal>L'art de capturer<br><em>l'instant</em> présent</h1>
+        <p class="hero-sub" data-reveal>Location de photobooths design en bois pour vos événements les plus prestigieux en Île-de-France.</p>
+        <div class="hero-cta" data-reveal>
+            <a href="#formules" class="btn-primary">Découvrir les offres</a>
+        </div>
     </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img-placeholder">
-      <svg class="camera-icon" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="10" y="35" width="100" height="70" rx="8"/>
-        <circle cx="60" cy="70" r="22"/>
-        <circle cx="60" cy="70" r="14"/>
-        <rect x="40" y="20" width="40" height="20" rx="4"/>
-        <circle cx="90" cy="48" r="5"/>
-      </svg>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:0.1em;opacity:0.3;color:#C8963C;">MAGIC BOX EVENTS</p>
+    <div class="hero-right">
+        <svg class="camera-icon" width="150" height="150" viewBox="0 0 120 120" fill="none" stroke="rgba(200,150,60,0.3)" stroke-width="1">
+            <rect x="10" y="35" width="100" height="70" rx="8"/>
+            <circle cx="60" cy="70" r="22"/>
+            <path d="M40 20h40v15H40z" />
+        </svg>
+        <div class="hero-badge">
+            <div style="font-family:'Cormorant Garamond'; font-size: 3rem; line-height:1;">+500</div>
+            <div style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;">Événements réussis</div>
+        </div>
     </div>
-    <div class="hero-badge">
-      <span class="hero-badge-num">3</span>
-      <span class="hero-badge-text">formules disponibles</span>
-    </div>
-  </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features" id="services">
-  <div class="section-title">
-    <span class="section-label">Pourquoi nous choisir</span>
-    <h2>Une expérience photo<br><em>hors du commun</em></h2>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card fade-up">
-      <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="4" y="14" width="40" height="28" rx="4"/>
-        <circle cx="24" cy="28" r="9"/>
-        <rect x="16" y="6" width="16" height="10" rx="2"/>
-        <circle cx="36" cy="20" r="2.5" fill="currentColor"/>
-      </svg>
-      <div class="feature-title">Photobooth Design</div>
-      <p class="feature-desc">Un appareil élégant habillé bois naturel qui s'intègre parfaitement à votre décoration. Écran tactile, objectif professionnel.</p>
-    </div>
-    <div class="feature-card fade-up">
-      <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M12 36 L8 44 L40 44 L36 36"/>
-        <rect x="12" y="8" width="24" height="30" rx="2"/>
-        <line x1="18" y1="20" x2="30" y2="20"/>
-        <line x1="18" y1="26" x2="30" y2="26"/>
-      </svg>
-      <div class="feature-title">Impressions Instantanées</div>
-      <p class="feature-desc">Tirage photo de qualité professionnelle en quelques secondes. Vos invités repartent avec un souvenir unique en main.</p>
-    </div>
-    <div class="feature-card fade-up">
-      <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="24" cy="20" r="10"/>
-        <path d="M8 44c0-8.8 7.2-16 16-16s16 7.2 16 16"/>
-        <path d="M32 6l3 3-3 3M36 9H26"/>
-      </svg>
-      <div class="feature-title">Présence sur place</div>
-      <p class="feature-desc">Un animateur dédié accompagne vos invités, gère le matériel et assure le bon déroulement tout au long de l'événement.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FORMULES -->
-<section class="formules" id="formules">
-  <div class="section-title">
-    <span class="section-label">Tarifs</span>
-    <h2>Nos <em>formules</em></h2>
-  </div>
-  <div class="formules-grid">
-    <!-- Essentielle -->
-    <div class="formule-card fade-up">
-      <div class="formule-name">Essentielle</div>
-      <div class="formule-impressions">100 impressions incluses</div>
-      <div class="formule-price"><sup>€</sup>230</div>
-      <div class="formule-sep"></div>
-      <a href="#contact" class="formule-cta">Réserver</a>
-    </div>
-    <!-- Classique -->
-    <div class="formule-card featured fade-up">
-      <span class="formule-badge">Populaire</span>
-      <div class="formule-name">Classique</div>
-      <div class="formule-impressions">200 impressions incluses</div>
-      <div class="formule-price"><sup>€</sup>290</div>
-      <div class="formule-sep"></div>
-      <a href="#contact" class="formule-cta">Réserver</a>
-    </div>
-    <!-- Premium -->
-    <div class="formule-card fade-up">
-      <div class="formule-name">Premium</div>
-      <div class="formule-impressions">300 impressions incluses</div>
-      <div class="formule-price"><sup>€</sup>350</div>
-      <div class="formule-sep"></div>
-      <a href="#contact" class="formule-cta">Réserver</a>
-    </div>
-  </div>
-</section>
-
-<!-- SUPPLEMENTS -->
-<section class="supplements">
-  <div class="supplements-inner">
-    <div>
-      <div class="supp-title">Suppléments</div>
-      <ul class="supp-list">
-        <li><strong>20 €/h</strong> – heure supplémentaire</li>
-        <li><strong>30 €/h</strong> – heure après minuit</li>
-        <li>Heure entamée = heure due</li>
-        <li>Maximum <strong>5 heures</strong> de prestation</li>
-        <li>Frais kilométriques à partir de 20 km</li>
-      </ul>
-    </div>
-    <div class="sep-v"></div>
-    <div>
-      <div class="supp-title">Idéal pour</div>
-      <ul class="supp-list">
-        <li>Mariages & fêtes de famille</li>
-        <li>Soirées d'entreprise & team building</li>
-        <li>Anniversaires & EVJF / EVG</li>
-        <li>Salons, foires & lancements produit</li>
-        <li>Tout événement en Île-de-France</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
+<section id="services">
     <div class="section-title">
-      <span class="section-label">Nous joindre</span>
-      <h2>Parlons de votre<br><em>prochain événement</em></h2>
+        <span class="section-label">Excellence</span>
+        <h2>Pourquoi choisir <em>Magic Box</em> ?</h2>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card" data-reveal>
+            <div class="feature-icon">✨</div>
+            <h3>Design Artisanal</h3>
+            <p>Un boîtier en bois noble qui devient un objet de décoration à part entière pour votre salle.</p>
+        </div>
+        <div class="feature-card" data-reveal>
+            <div class="feature-icon">⚡</div>
+            <h3>Vitesse Éclair</h3>
+            <p>Impression thermique haute définition en moins de 10 secondes. Pas d'attente, plus de fun.</p>
+        </div>
+        <div class="feature-card" data-reveal>
+            <div class="feature-icon">🤝</div>
+            <h3>Service Accompagné</h3>
+            <p>Un hôte dédié pour dynamiser vos invités et garantir une technique sans faille.</p>
+        </div>
+    </div>
+</section>
+
+<section class="formules" id="formules">
+    <div class="section-title">
+        <span class="section-label">Tarification</span>
+        <h2>Nos Formules <em>Clés en Main</em></h2>
+    </div>
+    <div class="formules-grid">
+        <div class="formule-card" data-reveal>
+            <h3>Essentielle</h3>
+            <div class="formule-price">230€</div>
+            <p>100 Tirages inclus<br>Galerie en ligne<br>Accessoires inclus</p>
+            <br>
+            <a href="#contact" class="btn-primary" style="background:transparent; border: 1px solid var(--gold); color: var(--gold);">Choisir</a>
+        </div>
+        <div class="formule-card featured" data-reveal>
+            <span style="background:var(--gold); color:white; padding:5px 15px; font-size:0.6rem; letter-spacing:0.2em; position:absolute; top:0; left:50%; transform:translate(-50%, -50%);">POPULAIRE</span>
+            <h3>Classique</h3>
+            <div class="formule-price">290€</div>
+            <p>200 Tirages inclus<br>Personnalisation cadre<br>Hôte sur place</p>
+            <br>
+            <a href="#contact" class="btn-primary">Choisir</a>
+        </div>
+        <div class="formule-card" data-reveal>
+            <h3>Premium</h3>
+            <div class="formule-price">350€</div>
+            <p>300 Tirages inclus<br>Livre d'or offert<br>Prestation 5h</p>
+            <br>
+            <a href="#contact" class="btn-primary" style="background:transparent; border: 1px solid var(--gold); color: var(--gold);">Choisir</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="section-title">
+        <span class="section-label">Contact</span>
+        <h2>Prêt à créer des <em>souvenirs</em> ?</h2>
     </div>
     <div class="contact-grid">
-      <a href="tel:0686011346" class="contact-item" style="text-decoration:none;">
-        <div class="contact-item-icon">📞</div>
-        <div>
-          <div class="contact-item-label">Téléphone</div>
-          <div class="contact-item-value">06 86 01 13 46</div>
-        </div>
-      </a>
-      <a href="tel:0769733331" class="contact-item" style="text-decoration:none;">
-        <div class="contact-item-icon">📞</div>
-        <div>
-          <div class="contact-item-label">Téléphone</div>
-          <div class="contact-item-value">07 69 73 33 31</div>
-        </div>
-      </a>
-      <a href="https://instagram.com/magicbox_idf" target="_blank" class="contact-item" style="text-decoration:none;">
-        <div class="contact-item-icon">📸</div>
-        <div>
-          <div class="contact-item-label">Instagram</div>
-          <div class="contact-item-value">@magicbox_idf</div>
-        </div>
-      </a>
-      <a href="https://tiktok.com/@magicbox_idf" target="_blank" class="contact-item" style="text-decoration:none;">
-        <div class="contact-item-icon">🎵</div>
-        <div>
-          <div class="contact-item-label">TikTok</div>
-          <div class="contact-item-value">@magicbox_idf</div>
-        </div>
-      </a>
+        <a href="tel:0686011346" class="contact-item" data-reveal>
+            <div style="margin-right:20px; font-size:1.5rem;">📞</div>
+            <div>
+                <small>Arthur</small>
+                <div>06 86 01 13 46</div>
+            </div>
+        </a>
+        <a href="https://instagram.com/magicbox_idf" target="_blank" class="contact-item" data-reveal>
+            <div style="margin-right:20px; font-size:1.5rem;">📸</div>
+            <div>
+                <small>Instagram</small>
+                <div>@magicbox_idf</div>
+            </div>
+        </a>
     </div>
-  </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 <span>Magic Box Events</span> — Photobooth événementiel Île-de-France · Particuliers & Professionnels</p>
+<footer style="padding: 60px 10%; background: #111; color: #666; text-align: center; font-size: 0.8rem;">
+    <p>© 2026 Magic Box Events. Créateur de souvenirs en Île-de-France.</p>
 </footer>
 
 <script>
-  // Intersection observer for fade-up elements
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.style.animation = 'fadeUp 0.8s ease forwards';
-        el.target.style.animationDelay = el.target.dataset.delay || '0s';
-      }
-    });
-  }, { threshold: 0.15 });
+    // Reveal animation on scroll
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
 
-  document.querySelectorAll('.feature-card, .formule-card, .contact-item').forEach((el, i) => {
-    el.style.opacity = '0';
-    el.dataset.delay = (i * 0.12) + 's';
-    observer.observe(el);
-  });
+    document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+        el.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(el);
+    });
 </script>
 
 </body>
