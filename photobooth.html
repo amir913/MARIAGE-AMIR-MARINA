@@ -27,7 +27,8 @@
             padding: 10px 5%; background: rgba(253, 251, 248, 0.95); backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(200, 150, 60, 0.1);
         }
-        .nav-logo img { height: 50px; width: auto; vertical-align: middle; }
+        /* LOGO AGRANDI */
+        .nav-logo img { height: 85px; width: auto; vertical-align: middle; transition: 0.3s; }
         
         .nav-tabs { display: flex; gap: 30px; list-style: none; }
         .nav-tabs a { 
@@ -47,8 +48,9 @@
         h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 25px; font-weight: 300; }
         h1 em { color: var(--gold); font-style: italic; }
         
+        /* PHOTO ACCUEIL AJUSTÉE (Positionnée vers le haut pour voir le sommet de la borne) */
         .hero-right { 
-            background: var(--dark) url('Média (18).jpg') center/cover;
+            background: var(--dark) url('Média (18).jpg') center 15%/cover;
             position: relative;
         }
 
@@ -94,6 +96,7 @@
             .hero, .specs, .grid-3, .info-block { grid-template-columns: 1fr; }
             .hero-right { height: 450px; }
             .nav-tabs { display: none; }
+            .nav-logo img { height: 60px; }
         }
     </style>
 </head>
@@ -153,7 +156,7 @@
             <div class="gallery-overlay"></div>
         </div>
         <div class="gallery-item">
-            <img src="Média (16).jpg" alt="Détail Impression">
+            <img src="Média (18).jpg" alt="La Borne Magic Box">
             <div class="gallery-overlay"></div>
         </div>
     </div>
