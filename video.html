@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Magic Box en action – Magic Box Events</title>
+    <meta name="description" content="La Magic Box en action ! Vidéos de nos prestations photobooth lors de mariages, anniversaires et soirées en Île-de-France.">
+    <link rel="canonical" href="https://magicboxevents.fr/videos.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C8963C;
+            --dark: #1A1A14;
+            --cream: #FDFBF8;
+            --text: #2C2C22;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--cream); color: var(--text); font-family: 'Jost', sans-serif; overflow-x: hidden; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 5%; background: rgba(253,251,248,0.95); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(200,150,60,0.1);
+        }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; text-decoration: none; color: var(--dark); }
+        .nav-logo span { color: var(--gold); }
+        .nav-tabs { display: flex; gap: 30px; list-style: none; }
+        .nav-tabs a { text-decoration: none; color: var(--text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; transition: 0.3s; }
+        .nav-tabs a:hover, .nav-tabs a.active { color: var(--gold); }
+
+        /* ── HEADER ── */
+        .page-header {
+            padding: 160px 10% 80px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid rgba(200,150,60,0.15);
+        }
+        .page-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px; display: block; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; }
+        h1 em { color: var(--gold); font-style: italic; }
+        .page-sub { margin-top: 20px; color: #5A5A48; font-weight: 300; font-size: 1rem; }
+
+        /* ── GRILLE VIDÉOS ── */
+        .videos-section { padding: 80px 5%; }
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .video-card:hover { transform: translateY(-6px); border-color: var(--gold); }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: var(--dark);
+            overflow: hidden;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .video-info { padding: 24px; }
+        .video-event {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .video-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .video-desc { font-size: 0.85rem; color: #5A5A48; font-weight: 300; }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 80px 10%;
+            background: var(--dark);
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; margin-bottom: 15px; }
+        .cta-section p { opacity: 0.6; margin-bottom: 35px; font-weight: 300; }
+        .btn-gold { background: var(--gold); color: white; padding: 14px 36px; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; display: inline-block; transition: 0.3s; }
+        .btn-gold:hover { background: #A07020; }
+
+        /* ── FOOTER ── */
+        footer { padding: 30px; text-align: center; background: #000; color: #555; font-size: 0.7rem; letter-spacing: 1px; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            nav { padding: 5px 4%; }
+            .nav-tabs { display: none; }
+            .page-header { padding: 120px 6% 60px; }
+            .videos-section { padding: 60px 4%; }
+            .videos-grid { grid-template-columns: 1fr; gap: 20px; }
+            .cta-section { padding: 60px 6%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html" class="nav-logo"><span>Magic</span> Box Events</a>
+    <ul class="nav-tabs">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#formules">Tarifs</a></li>
+        <li><a href="videos.html" class="active">En action</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="tel:0686011346" style="background:var(--gold); color:white; padding:10px 15px; text-decoration:none; font-size:0.7rem; font-weight:600; letter-spacing:1px; border-radius:2px;">RÉSERVER</a>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+    <span class="page-tag">Magic Box Events</span>
+    <h1><em>La Magic Box</em><br>en action</h1>
+    <p class="page-sub">Vivez l'expérience Magic Box à travers nos vraies prestations</p>
+</div>
+
+<!-- VIDÉOS -->
+<section class="videos-section">
+    <div class="videos-grid">
+
+        <!-- VIDÉO 1 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata">
+                    <source src="octobre rose au five.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <div class="video-event">Soirée événementielle</div>
+                <div class="video-title">Octobre Rose au Five</div>
+                <p class="video-desc">Une soirée colorée et festive avec la Magic Box au cœur de l'action.</p>
+            </div>
+        </div>
+
+        <!-- VIDÉO 2 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata">
+                    <source src="video pub.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <div class="video-event">Présentation</div>
+                <div class="video-title">Magic Box en action</div>
+                <p class="video-desc">Découvrez notre photobooth haut de gamme et ce qu'il apporte à vos événements.</p>
+            </div>
+        </div>
+
+        <!-- VIDÉO 3 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata">
+                    <source src="Soirée privée siège marque avenue sur champs elysées.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <div class="video-event">Soirée privée entreprise</div>
+                <div class="video-title">Siège marque – Champs-Élysées</div>
+                <p class="video-desc">Prestation exclusive pour une grande marque sur la plus belle avenue du monde.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+    <h2>Envie de la Magic Box<br>pour votre événement ?</h2>
+    <p>Contactez-nous pour vérifier la disponibilité</p>
+    <a href="tel:0686011346" class="btn-gold">Appeler maintenant</a>
+</div>
+
+<footer>© 2026 MAGIC BOX EVENTS — Location Photobooth Île-de-France</footer>
+
+</body>
+</html>
