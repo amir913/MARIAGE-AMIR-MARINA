@@ -102,7 +102,7 @@
         }
         .calendly-top-bar h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.7rem; font-weight: 300; margin-bottom: 4px;
+            font-size: 1.7rem; font-weight: 300; margin-bottom: 6px;
         }
         .date-badge {
             display: inline-flex; align-items: center; gap: 8px;
@@ -125,6 +125,7 @@
             border: 1px solid rgba(200,150,60,0.2);
             border-top: 3px solid var(--gold);
             overflow: hidden;
+            min-height: 700px;
         }
 
         /* ── NOTE ADMIN ── */
@@ -210,9 +211,8 @@
     💡 <strong>Pour toi (admin) :</strong> Pour marquer une date comme réservée, modifie le tableau <code>datesPrises</code> dans le JS en bas de page. Format : <strong>"YYYY-MM-DD"</strong>. Ex : <code>"2026-04-12"</code>
 </div>
 
-<!-- SECTION CALENDLY (cachée jusqu'à sélection d'une date) -->
+<!-- SECTION CALENDLY — vide au chargement, remplie au clic -->
 <div class="calendly-section" id="calendlySection">
-
     <div class="calendly-top-bar">
         <div>
             <h2>Finalisez votre réservation</h2>
@@ -220,23 +220,12 @@
         </div>
         <button class="change-btn" onclick="changeDate()">← Changer de date</button>
     </div>
-
-    <div class="calendly-wrapper">
-        <!-- Calendly inline widget -->
-        <div
-            class="calendly-inline-widget"
-            id="calendlyEmbed"
-            data-url="https://calendly.com/contact-magicboxevents/new-meeting"
-            style="min-width:320px; height:700px;">
-        </div>
+    <div class="calendly-wrapper" id="calendlyWrapper">
+        <!-- Le widget Calendly est injecté ici dynamiquement au clic -->
     </div>
-
 </div>
 
 <footer>© 2026 MAGIC BOX EVENTS — Location Photobooth Île-de-France</footer>
-
-<!-- Calendly script -->
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <script>
     // ══════════════════════════════════════════
@@ -251,6 +240,7 @@
 
     let currentDate = new Date();
     let selectedDate = null;
+    let calendlyScriptLoaded = false;
 
     const mois = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
     const jours = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
@@ -313,20 +303,37 @@
         selectedDate = dateStr;
         renderCalendar();
 
-        // Mise à jour du badge date
         document.getElementById('dateBadge').textContent = '📅 ' + d + ' ' + mois[month] + ' ' + year;
 
-        // Mise à jour de l'URL Calendly avec le mois pré-sélectionné
-        const embed = document.getElementById('calendlyEmbed');
-        embed.setAttribute('data-url',
-            `https://calendly.com/contact-magicboxevents/new-meeting?month=${dateStr.substring(0,7)}&date=${dateStr}`
+        const section  = document.getElementById('calendlySection');
+        const wrapper  = document.getElementById('calendlyWrapper');
+
+        // Vider et réinjecter le widget proprement
+        wrapper.innerHTML = '';
+
+        const div = document.createElement('div');
+        div.className = 'calendly-inline-widget';
+        div.setAttribute('data-url',
+            `https://calendly.com/contact-magicboxevents/new-meeting?month=${dateStr.substring(0,7)}&date=${dateStr}&hide_gdpr_banner=1`
         );
+        div.style.minWidth = '320px';
+        div.style.height = '700px';
+        wrapper.appendChild(div);
 
-        // Affichage de la section
-        const section = document.getElementById('calendlySection');
+        // Charger le script Calendly une seule fois, puis initialiser le widget
+        if (!calendlyScriptLoaded) {
+            const script = document.createElement('script');
+            script.src = 'https://assets.calendly.com/assets/external/widget.js';
+            script.onload = () => { calendlyScriptLoaded = true; };
+            document.body.appendChild(script);
+        } else {
+            // Script déjà chargé : forcer le re-scan du nouveau div
+            if (window.Calendly && window.Calendly.initInlineWidgets) {
+                window.Calendly.initInlineWidgets();
+            }
+        }
+
         section.classList.add('visible');
-
-        // Scroll vers le widget
         setTimeout(() => {
             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
@@ -335,6 +342,8 @@
     function changeDate() {
         selectedDate = null;
         renderCalendar();
+        // Vider le widget
+        document.getElementById('calendlyWrapper').innerHTML = '';
         document.getElementById('calendlySection').classList.remove('visible');
         document.querySelector('.calendar-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
