@@ -444,15 +444,49 @@
     }
 
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
-        }).then(r => {
-            if(r.ok){ this.style.display='none'; document.getElementById('successMsg').classList.add('visible'); }
-        });
+    e.preventDefault();
+    
+    // Sync l'email caché avant envoi
+    document.getElementById('hiddenReplyTo').value = document.getElementById('emailInput').value;
+    
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = '⏳ Envoi en cours...';
+    btn.disabled = true;
+
+    var formData = new FormData(this);
+
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(function(r) {
+        if(r.ok) {
+            document.getElementById('reservationForm').style.display = 'none';
+            document.getElementById('successMsg').classList.add('visible');
+        } else {
+            return r.json().then(function(data) {
+                alert('Erreur : ' + (data.error || 'Veuillez réessayer.'));
+                btn.textContent = '📅 Envoyer ma demande de réservation';
+                btn.disabled = false;
+            });
+        }
+    })
+    .catch(function(err) {
+        alert('Erreur réseau. Vérifiez votre connexion et réessayez.');
+        btn.textContent = '📅 Envoyer ma demande de réservation';
+        btn.disabled = false;
     });
+});
+```
+
+---
+
+### ✅ Correction 2 — Vérifier votre ID Formspree
+
+Dans votre HTML vous avez :
+```
+action="https://formspree.io/f/xaqddgdl"
 
     function toggleMenu(){ document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileMenu').classList.toggle('open'); }
     function closeMenu(){ document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobileMenu').classList.remove('open'); }
