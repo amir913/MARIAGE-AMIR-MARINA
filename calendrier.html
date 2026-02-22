@@ -219,7 +219,7 @@
     <form id="reservationForm" action="https://formspree.io/f/xaqddgdl" method="POST">
         <input type="hidden" name="date_evenement" id="hiddenDate">
         <input type="hidden" name="_subject" value="🎉 Nouvelle demande de réservation – Magic Box Events">
-        <input type="hidden" name="_replyto" id="hiddenReplyTo">
+
         <input type="hidden" name="option_eclairage" id="hiddenOption" value="Aucune option">
 
         <div class="form-row">
@@ -443,9 +443,6 @@
     // ── ENVOI FORMULAIRE ──
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Synchroniser l'email dans le champ caché _replyto
-        document.getElementById('hiddenReplyTo').value = document.getElementById('emailInput').value;
 
         var btn = document.getElementById('submitBtn');
         btn.textContent = '⏳ Envoi en cours...';
