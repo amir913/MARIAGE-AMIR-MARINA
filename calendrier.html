@@ -20,7 +20,12 @@
         html { scroll-behavior: smooth; }
         body { background: var(--cream); color: var(--text); font-family: 'Jost', sans-serif; overflow-x: hidden; }
 
-        nav { position: fixed; top: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: rgba(253,251,248,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(200,150,60,0.1); }
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 5%; background: rgba(253,251,248,0.95); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(200,150,60,0.1);
+        }
         .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; text-decoration: none; color: var(--dark); }
         .nav-logo span { color: var(--gold); }
         .nav-tabs { display: flex; gap: 30px; list-style: none; }
@@ -67,16 +72,21 @@
         .form-section { max-width: 620px; margin: 0 auto 80px; background: white; border: 1px solid rgba(200,150,60,0.2); padding: 50px 40px; display: none; animation: fadeIn 0.4s ease; }
         .form-section.visible { display: block; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
         .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 6px; }
         .form-date-selected { color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 8px; background: rgba(200,150,60,0.08); border: 1px solid rgba(200,150,60,0.25); padding: 6px 14px; border-radius: 2px; }
+
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; color: #888; margin-bottom: 8px; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--text); background: var(--cream); transition: border-color 0.3s; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
         .form-group textarea { resize: vertical; min-height: 100px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
         .btn-submit { width: 100%; background: var(--gold); color: white; padding: 16px; border: none; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; transition: 0.3s; margin-top: 10px; border-radius: 2px; }
-        .btn-submit:hover { background: #A07020; }
+        .btn-submit:hover:not(:disabled) { background: #A07020; }
+        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
         .success-msg { display: none; text-align: center; padding: 30px 0 10px; }
         .success-msg.visible { display: block; }
         .success-msg h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--green); margin-bottom: 10px; }
@@ -86,34 +96,12 @@
         .options-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; color: #888; margin-bottom: 12px; display: block; }
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
 
-        .option-card {
-            border: 2px solid rgba(0,0,0,0.08);
-            border-radius: 6px;
-            padding: 16px 14px;
-            cursor: pointer;
-            transition: 0.25s;
-            position: relative;
-            background: var(--cream);
-            user-select: none;
-            /* ✅ PAS de label, pas de conflit */
-        }
+        .option-card { border: 2px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 16px 14px; cursor: pointer; transition: 0.25s; position: relative; background: var(--cream); user-select: none; }
         .option-card:hover { border-color: rgba(200,150,60,0.5); background: rgba(200,150,60,0.03); }
         .option-card.selected { border-color: var(--gold); background: rgba(200,150,60,0.07); }
 
-        .option-check {
-            position: absolute; top: 10px; right: 10px;
-            width: 22px; height: 22px; border-radius: 50%;
-            border: 2px solid rgba(0,0,0,0.15);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; transition: 0.2s;
-            background: white; color: transparent;
-            pointer-events: none;
-        }
-        .option-card.selected .option-check {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: white;
-        }
+        .option-check { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; transition: 0.2s; background: white; color: transparent; pointer-events: none; }
+        .option-card.selected .option-check { background: var(--gold); border-color: var(--gold); color: white; }
 
         .option-badge { display: inline-block; background: var(--gold); color: white; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin-bottom: 8px; pointer-events: none; }
         .option-badge.recommended { background: var(--dark); }
@@ -125,6 +113,7 @@
         .option-features li::before { content: "✓ "; color: var(--gold); font-weight: 700; }
 
         .divider { border: none; border-top: 1px solid rgba(200,150,60,0.15); margin: 25px 0; }
+
         footer { padding: 30px; text-align: center; background: #000; color: #555; font-size: 0.7rem; letter-spacing: 1px; }
 
         @media (max-width: 768px) {
@@ -246,8 +235,7 @@
 
         <div class="form-group">
             <label>Email *</label>
-            <input type="email" name="email" id="emailInput" required placeholder="jean@exemple.fr"
-                oninput="document.getElementById('hiddenReplyTo').value=this.value">
+            <input type="email" name="email" id="emailInput" required placeholder="jean@exemple.fr">
         </div>
 
         <div class="form-group">
@@ -291,7 +279,7 @@
 
         <hr class="divider">
 
-        <!-- ══ OPTIONS ÉCLAIRAGE — DIV au lieu de LABEL pour éviter le conflit de clic ══ -->
+        <!-- OPTIONS ÉCLAIRAGE -->
         <span class="options-label">✨ Options éclairage (facultatif)</span>
         <div class="options-grid">
 
@@ -342,6 +330,7 @@
 
 <footer>© 2026 MAGIC BOX EVENTS — Location Photobooth Île-de-France</footer>
 
+<!-- CHATBOT -->
 <button id="mbe-chat-btn" onclick="mbeOpen()" aria-label="Chat">
     <div id="mbe-notif">1</div>
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
@@ -360,9 +349,14 @@
 </div>
 
 <script>
+    // ══ DATES RÉSERVÉES ══
     const datesPrises = [
-        "2026-02-24","2026-02-27","2026-02-28",
-        "2026-03-07","2026-03-14","2026-03-21",
+        "2026-02-24",
+        "2026-02-27",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
     ];
 
     let currentDate = new Date();
@@ -396,8 +390,9 @@
         }
     }
 
-    function selectDate(dateStr,d,month,year) {
-        selectedDate = dateStr; renderCalendar();
+    function selectDate(dateStr, d, month, year) {
+        selectedDate = dateStr;
+        renderCalendar();
         const dateFormatted = `${d} ${mois[month]} ${year}`;
         document.getElementById('formDateDisplay').textContent = '📅 ' + dateFormatted;
         document.getElementById('hiddenDate').value = dateFormatted;
@@ -438,55 +433,50 @@
         if(optRinglight) extra += 30;
         if(optSoftbox)   extra += 50;
         var btn = document.getElementById('submitBtn');
-        btn.textContent = extra > 0
-            ? '📅 Envoyer ma demande (options +' + extra + '€)'
-            : '📅 Envoyer ma demande de réservation';
+        if(!btn.disabled) {
+            btn.textContent = extra > 0
+                ? '📅 Envoyer ma demande (options +' + extra + '€)'
+                : '📅 Envoyer ma demande de réservation';
+        }
     }
 
+    // ── ENVOI FORMULAIRE ──
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Sync l'email caché avant envoi
-    document.getElementById('hiddenReplyTo').value = document.getElementById('emailInput').value;
-    
-    var btn = document.getElementById('submitBtn');
-    btn.textContent = '⏳ Envoi en cours...';
-    btn.disabled = true;
+        e.preventDefault();
 
-    var formData = new FormData(this);
+        // Synchroniser l'email dans le champ caché _replyto
+        document.getElementById('hiddenReplyTo').value = document.getElementById('emailInput').value;
 
-    fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(function(r) {
-        if(r.ok) {
-            document.getElementById('reservationForm').style.display = 'none';
-            document.getElementById('successMsg').classList.add('visible');
-        } else {
-            return r.json().then(function(data) {
-                alert('Erreur : ' + (data.error || 'Veuillez réessayer.'));
-                btn.textContent = '📅 Envoyer ma demande de réservation';
-                btn.disabled = false;
-            });
-        }
-    })
-    .catch(function(err) {
-        alert('Erreur réseau. Vérifiez votre connexion et réessayez.');
-        btn.textContent = '📅 Envoyer ma demande de réservation';
-        btn.disabled = false;
+        var btn = document.getElementById('submitBtn');
+        btn.textContent = '⏳ Envoi en cours...';
+        btn.disabled = true;
+
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(function(response) {
+            if(response.ok) {
+                document.getElementById('reservationForm').style.display = 'none';
+                document.getElementById('successMsg').classList.add('visible');
+            } else {
+                return response.json().then(function(data) {
+                    var msg = (data && data.errors)
+                        ? data.errors.map(function(e){ return e.message; }).join(', ')
+                        : 'Une erreur est survenue. Veuillez réessayer.';
+                    alert('Erreur : ' + msg);
+                    btn.textContent = '📅 Envoyer ma demande de réservation';
+                    btn.disabled = false;
+                });
+            }
+        })
+        .catch(function() {
+            alert('Erreur réseau. Vérifiez votre connexion et réessayez.');
+            btn.textContent = '📅 Envoyer ma demande de réservation';
+            btn.disabled = false;
+        });
     });
-});
-```
-
----
-
-### ✅ Correction 2 — Vérifier votre ID Formspree
-
-Dans votre HTML vous avez :
-```
-action="https://formspree.io/f/xaqddgdl"
 
     function toggleMenu(){ document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileMenu').classList.toggle('open'); }
     function closeMenu(){ document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobileMenu').classList.remove('open'); }
