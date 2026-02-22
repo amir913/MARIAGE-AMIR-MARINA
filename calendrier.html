@@ -20,7 +20,6 @@
         html { scroll-behavior: smooth; }
         body { background: var(--cream); color: var(--text); font-family: 'Jost', sans-serif; overflow-x: hidden; }
 
-        /* ── NAV ── */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
@@ -33,7 +32,6 @@
         .nav-tabs a { text-decoration: none; color: var(--text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; transition: 0.3s; }
         .nav-tabs a:hover { color: var(--gold); }
 
-        /* ── HAMBURGER ── */
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; background: none; border: none; }
         .hamburger span { display: block; width: 25px; height: 2px; background: var(--dark); transition: 0.3s; }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -44,19 +42,16 @@
         .mobile-menu a { display: block; padding: 14px 8%; text-decoration: none; color: var(--text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; border-bottom: 1px solid rgba(200,150,60,0.08); transition: 0.3s; }
         .mobile-menu a:hover { color: var(--gold); }
 
-        /* ── HEADER ── */
         .page-header { padding: 140px 10% 60px; text-align: center; background: white; border-bottom: 1px solid rgba(200,150,60,0.15); }
         .page-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px; display: block; }
         h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; }
         h1 em { color: var(--gold); font-style: italic; }
         .page-sub { margin-top: 15px; color: #5A5A48; font-weight: 300; font-size: 0.95rem; }
 
-        /* ── LÉGENDE ── */
         .legend { display: flex; justify-content: center; gap: 30px; padding: 30px; flex-wrap: wrap; }
         .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; }
         .legend-dot { width: 14px; height: 14px; border-radius: 50%; }
 
-        /* ── CALENDRIER ── */
         .calendar-section { padding: 40px 5% 80px; max-width: 900px; margin: 0 auto; }
         .calendar-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .calendar-nav button { background: none; border: 1px solid rgba(200,150,60,0.3); color: var(--gold); padding: 8px 18px; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; transition: 0.3s; }
@@ -64,11 +59,7 @@
         .calendar-month { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--dark); text-transform: capitalize; }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
         .day-header { text-align: center; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; padding: 8px 0; font-weight: 600; }
-        .day {
-            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
-            border-radius: 4px; font-size: 0.88rem; font-weight: 500;
-            cursor: default; transition: 0.2s; position: relative;
-        }
+        .day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.88rem; font-weight: 500; cursor: default; transition: 0.2s; position: relative; }
         .day.empty { background: transparent; }
         .day.past { color: #ccc; background: transparent; }
         .day.taken { background: rgba(192,57,43,0.1); color: var(--red); border: 1px solid rgba(192,57,43,0.2); }
@@ -79,73 +70,76 @@
         .day.today { font-weight: 700; }
 
         /* ── FORMULAIRE ── */
-        .form-section {
-            max-width: 620px; margin: 0 auto 80px;
-            background: white; border: 1px solid rgba(200,150,60,0.2);
-            padding: 50px 40px; display: none;
-            animation: fadeIn 0.4s ease;
-        }
+        .form-section { max-width: 620px; margin: 0 auto 80px; background: white; border: 1px solid rgba(200,150,60,0.2); padding: 50px 40px; display: none; animation: fadeIn 0.4s ease; }
         .form-section.visible { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
+        @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
         .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 6px; }
-        .form-date-selected {
-            color: var(--gold); font-size: 0.78rem; font-weight: 600;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            margin-bottom: 30px;
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(200,150,60,0.08);
-            border: 1px solid rgba(200,150,60,0.25);
-            padding: 6px 14px; border-radius: 2px;
-        }
-
+        .form-date-selected { color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 8px; background: rgba(200,150,60,0.08); border: 1px solid rgba(200,150,60,0.25); padding: 6px 14px; border-radius: 2px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; color: #888; margin-bottom: 8px; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px 16px;
-            border: 1px solid rgba(0,0,0,0.12); border-radius: 2px;
-            font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--text);
-            background: var(--cream); transition: border-color 0.3s;
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--gold);
-        }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--text); background: var(--cream); transition: border-color 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
         .form-group textarea { resize: vertical; min-height: 100px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-
-        .btn-submit {
-            width: 100%; background: var(--gold); color: white;
-            padding: 16px; border: none; cursor: pointer;
-            font-family: 'Jost', sans-serif; font-size: 0.82rem;
-            text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600;
-            transition: 0.3s; margin-top: 10px; border-radius: 2px;
-        }
+        .btn-submit { width: 100%; background: var(--gold); color: white; padding: 16px; border: none; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; transition: 0.3s; margin-top: 10px; border-radius: 2px; }
         .btn-submit:hover { background: #A07020; }
-
         .success-msg { display: none; text-align: center; padding: 30px 0 10px; }
         .success-msg.visible { display: block; }
         .success-msg h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--green); margin-bottom: 10px; }
         .success-msg p { color: #5A5A48; font-weight: 300; line-height: 1.7; }
 
-        /* ── NOTE ADMIN ── */
-        .admin-note {
-            max-width: 620px; margin: 0 auto 40px;
-            background: rgba(200,150,60,0.06);
-            border: 1px dashed rgba(200,150,60,0.4);
-            padding: 20px 25px;
-            font-size: 0.82rem; color: #5A5A48; line-height: 1.9;
+        /* ── OPTIONS ÉCLAIRAGE ── */
+        .options-label {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+            font-weight: 600; color: #888; margin-bottom: 12px; display: block;
         }
-        .admin-note strong { color: var(--gold); }
-        .admin-note code { background: rgba(200,150,60,0.12); padding: 1px 6px; border-radius: 2px; font-size: 0.78rem; }
+        .options-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;
+        }
+        .option-card {
+            border: 2px solid rgba(0,0,0,0.08); border-radius: 6px;
+            padding: 16px 14px; cursor: pointer; transition: 0.25s;
+            position: relative; background: var(--cream);
+            user-select: none;
+        }
+        .option-card:hover { border-color: rgba(200,150,60,0.4); }
+        .option-card.selected { border-color: var(--gold); background: rgba(200,150,60,0.05); }
+        .option-card input[type="checkbox"] { display: none; }
 
-        /* ── FOOTER ── */
+        .option-check {
+            position: absolute; top: 10px; right: 10px;
+            width: 20px; height: 20px; border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; color: transparent; transition: 0.2s;
+            background: white;
+        }
+        .option-card.selected .option-check {
+            background: var(--gold); border-color: var(--gold); color: white;
+        }
+
+        .option-badge {
+            display: inline-block;
+            background: var(--gold); color: white;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 2px 7px; border-radius: 2px;
+            margin-bottom: 8px;
+        }
+        .option-badge.recommended {
+            background: var(--dark);
+        }
+
+        .option-icon { font-size: 1.6rem; margin-bottom: 6px; display: block; }
+        .option-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 2px; }
+        .option-price { color: var(--gold); font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+        .option-features { list-style: none; }
+        .option-features li { font-size: 0.75rem; color: #5A5A48; padding: 2px 0; }
+        .option-features li::before { content: "✓ "; color: var(--gold); font-weight: 700; }
+
+        .divider { border: none; border-top: 1px solid rgba(200,150,60,0.15); margin: 25px 0; }
+
         footer { padding: 30px; text-align: center; background: #000; color: #555; font-size: 0.7rem; letter-spacing: 1px; }
 
-        /* ── MOBILE ── */
         @media (max-width: 768px) {
             nav { padding: 5px 4%; height: 75px; }
             .nav-tabs { display: none; }
@@ -156,12 +150,49 @@
             .day { font-size: 0.78rem; }
             .form-section { padding: 30px 20px; margin: 0 4% 60px; }
             .form-row { grid-template-columns: 1fr; }
+            .options-grid { grid-template-columns: 1fr; }
         }
+
+        /* CHATBOT */
+        #mbe-chat-btn { position: fixed; bottom: 28px; right: 28px; z-index: 9999; width: 62px; height: 62px; border-radius: 50%; background: #C8963C; box-shadow: 0 4px 20px rgba(200,150,60,0.5); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; animation: mbePulse 2.5s infinite; }
+        #mbe-chat-btn:hover { transform: scale(1.1); }
+        #mbe-chat-btn svg { width: 28px; height: 28px; fill: white; }
+        @keyframes mbePulse { 0%,100%{box-shadow:0 4px 20px rgba(200,150,60,0.5)} 50%{box-shadow:0 4px 36px rgba(200,150,60,0.85)} }
+        #mbe-notif { position: absolute; top: -3px; right: -3px; background: #C0392B; color: white; width: 20px; height: 20px; border-radius: 50%; font-size: 0.68rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        #mbe-win { position: fixed; bottom: 104px; right: 28px; z-index: 9998; width: 355px; background: #FDFBF8; border-radius: 14px; box-shadow: 0 8px 40px rgba(0,0,0,0.18); display: none; flex-direction: column; overflow: hidden; font-family: 'Jost', sans-serif; }
+        #mbe-win.open { display: flex; animation: mbeUp 0.3s ease; }
+        @keyframes mbeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+        #mbe-head { background: #1A1A14; padding: 15px 18px; display: flex; align-items: center; gap: 11px; }
+        .mbe-av { width: 40px; height: 40px; border-radius: 50%; background: #C8963C; font-size: 1.15rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .mbe-hi h3 { color: white; font-size: 0.88rem; font-weight: 600; margin: 0; }
+        .mbe-hi p  { color: #C8963C; font-size: 0.7rem; margin: 3px 0 0; display: flex; align-items: center; gap: 5px; }
+        .mbe-dot   { width: 7px; height: 7px; border-radius: 50%; background: #27AE60; display: inline-block; }
+        #mbe-x { margin-left: auto; background: none; border: none; color: #666; font-size: 1.2rem; cursor: pointer; padding: 4px; }
+        #mbe-x:hover { color: white; }
+        #mbe-msgs { overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 9px; max-height: 310px; }
+        #mbe-msgs::-webkit-scrollbar { width: 4px; }
+        #mbe-msgs::-webkit-scrollbar-thumb { background: rgba(200,150,60,0.3); border-radius: 2px; }
+        .mbe-m { max-width: 86%; padding: 9px 13px; border-radius: 12px; font-size: 0.83rem; line-height: 1.55; animation: mbeMsg 0.22s ease; white-space: pre-line; }
+        @keyframes mbeMsg { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:none} }
+        .mbe-m.bot  { background: white; color: #2C2C22; border: 1px solid rgba(200,150,60,0.2); border-bottom-left-radius: 3px; align-self: flex-start; }
+        .mbe-m.user { background: #C8963C; color: white; border-bottom-right-radius: 3px; align-self: flex-end; }
+        .mbe-typing { display: flex; gap: 5px; align-items: center; padding: 11px 13px; background: white; border: 1px solid rgba(200,150,60,0.2); border-radius: 12px; border-bottom-left-radius: 3px; align-self: flex-start; }
+        .mbe-typing span { width: 7px; height: 7px; border-radius: 50%; background: #C8963C; animation: mbeBounce 1.1s infinite; }
+        .mbe-typing span:nth-child(2){animation-delay:.18s}
+        .mbe-typing span:nth-child(3){animation-delay:.36s}
+        @keyframes mbeBounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-7px)}}
+        #mbe-choices { padding: 10px 14px 14px; display: flex; flex-direction: column; gap: 7px; border-top: 1px solid rgba(200,150,60,0.12); }
+        .mbe-btn { background: white; border: 1px solid rgba(200,150,60,0.35); color: #2C2C22; padding: 9px 13px; border-radius: 8px; cursor: pointer; text-align: left; font-family: 'Jost', sans-serif; font-size: 0.81rem; font-weight: 500; transition: 0.2s; }
+        .mbe-btn:hover { background: #C8963C; color: white; border-color: #C8963C; }
+        .mbe-btn.gold  { background: #C8963C; color: white; border-color: #C8963C; font-weight: 600; text-align: center; }
+        .mbe-btn.gold:hover  { background: #A07020; }
+        .mbe-btn.green { background: #25D366; color: white; border-color: #25D366; font-weight: 600; text-align: center; }
+        .mbe-btn.green:hover { background: #1da851; }
+        @media(max-width:480px){ #mbe-win{width:calc(100vw - 30px);right:15px} #mbe-chat-btn{right:15px;bottom:20px} }
     </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
     <a href="index.html" class="nav-logo"><span>Magic</span> Box Events</a>
     <ul class="nav-tabs">
@@ -176,7 +207,6 @@
     </button>
 </nav>
 
-<!-- MENU MOBILE -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" onclick="closeMenu()">Accueil</a>
     <a href="video.html" onclick="closeMenu()">La Magic Box en action</a>
@@ -185,21 +215,18 @@
     <a href="tel:0686011346" style="color:var(--gold); font-weight:600;">📞 Appeler</a>
 </div>
 
-<!-- HEADER -->
 <div class="page-header">
     <span class="page-tag">Disponibilités</span>
     <h1>Choisissez votre<br><em>date</em></h1>
     <p class="page-sub">Cliquez sur une date disponible pour envoyer votre demande de réservation</p>
 </div>
 
-<!-- LÉGENDE -->
 <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Disponible</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Déjà réservé</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> Votre sélection</div>
 </div>
 
-<!-- CALENDRIER -->
 <div class="calendar-section">
     <div class="calendar-nav">
         <button onclick="prevMonth()">← Précédent</button>
@@ -209,8 +236,6 @@
     <div class="calendar-grid" id="calendarGrid"></div>
 </div>
 
-
-<!-- FORMULAIRE -->
 <div class="form-section" id="formSection">
     <div class="form-title">Votre demande de réservation</div>
     <div class="form-date-selected" id="formDateDisplay">📅 —</div>
@@ -219,6 +244,7 @@
         <input type="hidden" name="date_evenement" id="hiddenDate">
         <input type="hidden" name="_subject" value="🎉 Nouvelle demande de réservation – Magic Box Events">
         <input type="hidden" name="_replyto" id="hiddenReplyTo">
+        <input type="hidden" name="option_eclairage" id="hiddenOption" value="Aucune option">
 
         <div class="form-row">
             <div class="form-group">
@@ -276,12 +302,50 @@
             <input type="text" name="horaires" placeholder="Ex : 19h – 23h">
         </div>
 
+        <hr class="divider">
+
+        <!-- ══ OPTIONS ÉCLAIRAGE ══ -->
+        <span class="options-label">✨ Options éclairage (facultatif)</span>
+        <div class="options-grid">
+
+            <label class="option-card" id="card-ringlight" onclick="toggleOption('ringlight')">
+                <input type="checkbox" id="opt-ringlight">
+                <div class="option-check" id="check-ringlight">✓</div>
+                <span class="option-badge">+30 €</span>
+                <span class="option-icon">💡</span>
+                <div class="option-name">Ring Light</div>
+                <div class="option-price">+30 €</div>
+                <ul class="option-features">
+                    <li>Lumière douce & flatteuse</li>
+                    <li>Photos lumineuses</li>
+                    <li>Idéal soirées & mariages</li>
+                </ul>
+            </label>
+
+            <label class="option-card" id="card-softbox" onclick="toggleOption('softbox')">
+                <input type="checkbox" id="opt-softbox">
+                <div class="option-check" id="check-softbox">✓</div>
+                <span class="option-badge recommended">⭐ Recommandé</span>
+                <span class="option-icon">🎬</span>
+                <div class="option-name">Studio Softbox</div>
+                <div class="option-price">+50 €</div>
+                <ul class="option-features">
+                    <li>Rendu photo professionnel</li>
+                    <li>Lumière type studio</li>
+                    <li>Idéal mariages & entreprises</li>
+                </ul>
+            </label>
+
+        </div>
+
+        <hr class="divider">
+
         <div class="form-group">
             <label>Message (optionnel)</label>
             <textarea name="message" placeholder="Informations complémentaires…"></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">📅 Envoyer ma demande de réservation</button>
+        <button type="submit" class="btn-submit" id="submitBtn">📅 Envoyer ma demande de réservation</button>
     </form>
 
     <div class="success-msg" id="successMsg">
@@ -293,23 +357,37 @@
 
 <footer>© 2026 MAGIC BOX EVENTS — Location Photobooth Île-de-France</footer>
 
+<!-- CHATBOT -->
+<button id="mbe-chat-btn" onclick="mbeOpen()" aria-label="Chat">
+    <div id="mbe-notif">1</div>
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+<div id="mbe-win">
+    <div id="mbe-head">
+        <div class="mbe-av">✨</div>
+        <div class="mbe-hi">
+            <h3>Magic Box Events</h3>
+            <p><span class="mbe-dot"></span>Répond en quelques minutes</p>
+        </div>
+        <button id="mbe-x" onclick="mbeClose()">✕</button>
+    </div>
+    <div id="mbe-msgs"></div>
+    <div id="mbe-choices"></div>
+</div>
+
 <script>
-    // ══════════════════════════════════════════
-    // 👉 DATES DÉJÀ RÉSERVÉES (format "YYYY-MM-DD")
-    // Ajoute ici chaque date confirmée pour la griser sur le calendrier
+    // ══ DATES RÉSERVÉES ══
     const datesPrises = [
-        "2026-02-24",  // ✅ Réservé
-        "2026-02-27",  // ✅ Réservé
+        "2026-02-24",
+        "2026-02-27",
         "2026-02-28",
         "2026-03-07",
         "2026-03-14",
         "2026-03-21",
     ];
-    // ══════════════════════════════════════════
 
     let currentDate = new Date();
     let selectedDate = null;
-
     const mois = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
     const jours = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
 
@@ -317,82 +395,75 @@
         const grid = document.getElementById('calendarGrid');
         const title = document.getElementById('monthTitle');
         grid.innerHTML = '';
-
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
         title.textContent = mois[month] + ' ' + year;
-
-        jours.forEach(j => {
-            const h = document.createElement('div');
-            h.className = 'day-header';
-            h.textContent = j;
-            grid.appendChild(h);
-        });
-
+        jours.forEach(j => { const h = document.createElement('div'); h.className='day-header'; h.textContent=j; grid.appendChild(h); });
         const firstDay = new Date(year, month, 1);
-        let startDay = firstDay.getDay() - 1;
-        if (startDay < 0) startDay = 6;
-
-        for (let i = 0; i < startDay; i++) {
-            const empty = document.createElement('div');
-            empty.className = 'day empty';
-            grid.appendChild(empty);
-        }
-
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const today = new Date();
-        today.setHours(0,0,0,0);
-
-        for (let d = 1; d <= daysInMonth; d++) {
-            const dayEl = document.createElement('div');
+        let startDay = firstDay.getDay() - 1; if(startDay < 0) startDay = 6;
+        for(let i=0;i<startDay;i++){const e=document.createElement('div');e.className='day empty';grid.appendChild(e);}
+        const daysInMonth = new Date(year, month+1, 0).getDate();
+        const today = new Date(); today.setHours(0,0,0,0);
+        for(let d=1;d<=daysInMonth;d++){
+            const el = document.createElement('div');
             const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-            const thisDate = new Date(year, month, d);
-
-            dayEl.textContent = d;
-            dayEl.className = 'day';
-
-            if (thisDate < today) {
-                dayEl.classList.add('past');
-            } else if (datesPrises.includes(dateStr)) {
-                dayEl.classList.add('taken');
-                dayEl.title = 'Date déjà réservée';
-            } else {
-                dayEl.classList.add('available');
-                if (dateStr === selectedDate) dayEl.classList.add('selected');
-                dayEl.onclick = () => selectDate(dateStr, d, month, year);
-            }
-
-            if (thisDate.toDateString() === today.toDateString()) dayEl.classList.add('today');
-            grid.appendChild(dayEl);
+            const thisDate = new Date(year,month,d);
+            el.textContent = d; el.className='day';
+            if(thisDate < today){ el.classList.add('past'); }
+            else if(datesPrises.includes(dateStr)){ el.classList.add('taken'); el.title='Date déjà réservée'; }
+            else { el.classList.add('available'); if(dateStr===selectedDate) el.classList.add('selected'); el.onclick=()=>selectDate(dateStr,d,month,year); }
+            if(thisDate.toDateString()===today.toDateString()) el.classList.add('today');
+            grid.appendChild(el);
         }
     }
 
-    function selectDate(dateStr, d, month, year) {
-        selectedDate = dateStr;
-        renderCalendar();
-
+    function selectDate(dateStr,d,month,year) {
+        selectedDate = dateStr; renderCalendar();
         const dateFormatted = `${d} ${mois[month]} ${year}`;
         document.getElementById('formDateDisplay').textContent = '📅 ' + dateFormatted;
         document.getElementById('hiddenDate').value = dateFormatted;
         document.getElementById('successDate').textContent = dateFormatted;
-
-        const formSection = document.getElementById('formSection');
-        formSection.classList.add('visible');
-        setTimeout(() => {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        const fs = document.getElementById('formSection');
+        fs.classList.add('visible');
+        setTimeout(()=>{ fs.scrollIntoView({behavior:'smooth',block:'start'}); }, 100);
     }
 
-    function prevMonth() {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar();
-    }
-    function nextMonth() {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar();
+    function prevMonth(){ currentDate.setMonth(currentDate.getMonth()-1); renderCalendar(); }
+    function nextMonth(){ currentDate.setMonth(currentDate.getMonth()+1); renderCalendar(); }
+
+    // ── OPTIONS ÉCLAIRAGE ──
+    var optRinglight = false;
+    var optSoftbox   = false;
+
+    function toggleOption(opt) {
+        if(opt === 'ringlight') {
+            optRinglight = !optRinglight;
+            document.getElementById('card-ringlight').classList.toggle('selected', optRinglight);
+        } else {
+            optSoftbox = !optSoftbox;
+            document.getElementById('card-softbox').classList.toggle('selected', optSoftbox);
+        }
+        updateOptionHidden();
+        updateSubmitBtn();
     }
 
-    // Envoi formulaire via Formspree
+    function updateOptionHidden() {
+        var opts = [];
+        if(optRinglight) opts.push('Ring Light (+30€)');
+        if(optSoftbox)   opts.push('Studio Softbox (+50€)');
+        document.getElementById('hiddenOption').value = opts.length ? opts.join(' + ') : 'Aucune option';
+    }
+
+    function updateSubmitBtn() {
+        var base = '📅 Envoyer ma demande';
+        var extra = 0;
+        if(optRinglight) extra += 30;
+        if(optSoftbox)   extra += 50;
+        var btn = document.getElementById('submitBtn');
+        btn.textContent = extra > 0 ? base + ' (options +' + extra + '€)' : base + ' de réservation';
+    }
+
+    // ── ENVOI FORMSPREE ──
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const form = this;
@@ -401,23 +472,37 @@
             body: new FormData(form),
             headers: { 'Accept': 'application/json' }
         }).then(response => {
-            if (response.ok) {
+            if(response.ok){
                 form.style.display = 'none';
                 document.getElementById('successMsg').classList.add('visible');
             }
         });
     });
 
-    function toggleMenu() {
-        document.getElementById('hamburger').classList.toggle('open');
-        document.getElementById('mobileMenu').classList.toggle('open');
-    }
-    function closeMenu() {
-        document.getElementById('hamburger').classList.remove('open');
-        document.getElementById('mobileMenu').classList.remove('open');
-    }
+    function toggleMenu(){ document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileMenu').classList.toggle('open'); }
+    function closeMenu(){ document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobileMenu').classList.remove('open'); }
 
     renderCalendar();
+
+    // ── CHATBOT ──
+    (function(){
+        var WA_NUM = "33686011346";
+        var WA_MSG = encodeURIComponent("Bonjour Magic Box Events ! J'aimerais avoir plus d'informations 📸");
+        var FLOW = {
+            start: { bot: "Bonjour ! 👋 Je suis l'assistant de Magic Box Events.\n\nComment puis-je vous aider ?", choices: [ {label:"💰 Vos tarifs ?",next:"tarifs"},{label:"📅 Comment réserver ?",next:"reserver"},{label:"📍 Vous intervenez où ?",next:"zone"},{label:"📸 C'est quoi la Magic Box ?",next:"concept"} ] },
+            tarifs: { bot: "Nous proposons 3 formules :\n\n✨ Essentielle — 230€\n   100 tirages inclus\n\n📸 Classique — 290€\n   200 tirages inclus\n\n👑 Premium — 350€\n   300 tirages inclus\n\nOptions éclairage disponibles :\n💡 Ring Light +30€\n🎬 Studio Softbox +50€", choices: [ {label:"📅 Je veux réserver !",next:"reserver"},{label:"📍 Vous venez dans ma ville ?",next:"zone"},{label:"↩️ Retour au menu",next:"start"} ] },
+            reserver: { bot: "C'est simple ! 😊\n\n1️⃣ Choisissez une date verte sur le calendrier\n2️⃣ Remplissez le formulaire\n3️⃣ Ajoutez une option éclairage si vous le souhaitez\n4️⃣ On vous confirme rapidement ✅", choices: [ {label:"💬 Contacter sur WhatsApp",action:"wa"},{label:"↩️ Retour au menu",next:"start"} ] },
+            zone: { bot: "Nous intervenons principalement en Île-de-France 📍\n\nDéplacement possible partout en France selon la date et la distance.", choices: [ {label:"💬 Vérifier sur WhatsApp",action:"wa"},{label:"📅 Je veux réserver !",next:"reserver"},{label:"↩️ Retour au menu",next:"start"} ] },
+            concept: { bot: "La Magic Box est un photobooth nouvelle génération ! 📸✨\n\nVos invités prennent des photos et reçoivent leurs tirages instantanément.\n\nParfait pour :\n💍 Mariages\n🎂 Anniversaires\n🎉 Soirées d'entreprise\n💃 EVJF / EVG", choices: [ {label:"💰 Voir les tarifs",next:"tarifs"},{label:"📅 Réserver une date",next:"reserver"},{label:"↩️ Retour au menu",next:"start"} ] },
+        };
+        var msgs=document.getElementById('mbe-msgs'), choices=document.getElementById('mbe-choices'), started=false;
+        function addMsg(t,w){var d=document.createElement('div');d.className='mbe-m '+w;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+        function typing(cb){var t=document.createElement('div');t.className='mbe-typing';t.innerHTML='<span></span><span></span><span></span>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;setTimeout(function(){msgs.removeChild(t);cb();},900);}
+        function showStep(key){var step=FLOW[key];choices.innerHTML='';typing(function(){addMsg(step.bot,'bot');step.choices.forEach(function(c){var btn=document.createElement('button');btn.className='mbe-btn';btn.textContent=c.label;if(c.action==='wa'){btn.classList.add('green');btn.onclick=function(){addMsg(c.label,'user');choices.innerHTML='';window.open('https://wa.me/'+WA_NUM+'?text='+WA_MSG,'_blank');};}else{btn.onclick=function(){addMsg(c.label,'user');showStep(c.next);};}choices.appendChild(btn);});});}
+        window.mbeOpen=function(){document.getElementById('mbe-notif').style.display='none';document.getElementById('mbe-win').classList.add('open');if(!started){started=true;showStep('start');}};
+        window.mbeClose=function(){document.getElementById('mbe-win').classList.remove('open');};
+        setTimeout(function(){if(!started)mbeOpen();},4000);
+    })();
 </script>
 </body>
 </html>
