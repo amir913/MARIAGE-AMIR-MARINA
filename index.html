@@ -10,7 +10,6 @@
     <meta name="author" content="Magic Box Events">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://magicboxevents.fr/">
-
     <meta property="og:title" content="Magic Box Events – Photobooth Événementiel">
     <meta property="og:description" content="Location de photobooth haut de gamme en bois pour vos événements en Île-de-France. Impressions instantanées dès 230€.">
     <meta property="og:url" content="https://magicboxevents.fr/">
@@ -19,17 +18,7 @@
     <meta property="og:image" content="https://magicboxevents.fr/Média (18).jpg">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Magic Box Events",
-      "description": "Location de photobooth événementiel en Île-de-France pour particuliers et professionnels.",
-      "url": "https://magicboxevents.fr",
-      "telephone": "+33686011346",
-      "areaServed": "Île-de-France",
-      "priceRange": "230€ - 350€",
-      "sameAs": ["https://instagram.com/magicbox_idf","https://tiktok.com/@magicbox_idf"]
-    }
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"Magic Box Events","description":"Location de photobooth événementiel en Île-de-France pour particuliers et professionnels.","url":"https://magicboxevents.fr","telephone":"+33686011346","areaServed":"Île-de-France","priceRange":"230€ - 350€","sameAs":["https://instagram.com/magicbox_idf","https://tiktok.com/@magicbox_idf"]}
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,12 +37,7 @@
         html { scroll-behavior: smooth; }
         body { background: var(--cream); color: var(--text); font-family: 'Jost', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 5%; background: rgba(253,251,248,0.95); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(200,150,60,0.1);
-        }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: rgba(253,251,248,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(200,150,60,0.1); }
         .nav-logo img { height: 85px; width: auto; vertical-align: middle; transition: 0.3s; }
         .nav-tabs { display: flex; gap: 30px; list-style: none; }
         .nav-tabs a { text-decoration: none; color: var(--text); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; transition: var(--transition); }
@@ -69,63 +53,17 @@
         .specs { background: #f9f6f2; padding: 80px 10%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
         .spec-card span { font-size: 2rem; display: block; margin-bottom: 10px; }
 
-        /* ══════════════════════════════════════
-           COMPTEUR ANIMÉ
-        ══════════════════════════════════════ */
-        .counters {
-            background: var(--dark);
-            padding: 70px 10%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            text-align: center;
-        }
-        .counter-item {
-            padding: 30px 20px;
-            border-right: 1px solid rgba(255,255,255,0.08);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
+        /* COMPTEUR */
+        .counters { background: var(--dark); padding: 70px 10%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; text-align: center; }
+        .counter-item { padding: 30px 20px; border-right: 1px solid rgba(255,255,255,0.08); opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .counter-item:last-child { border-right: none; }
         .counter-item.visible { opacity: 1; transform: translateY(0); }
         .counter-item:nth-child(2) { transition-delay: 0.15s; }
         .counter-item:nth-child(3) { transition-delay: 0.3s; }
-
-        .counter-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            font-weight: 300;
-            color: var(--gold);
-            line-height: 1;
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 4px;
-        }
-        .counter-prefix {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            color: rgba(200,150,60,0.7);
-            font-family: 'Cormorant Garamond', serif;
-        }
-        .counter-suffix {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            color: rgba(200,150,60,0.7);
-            font-family: 'Cormorant Garamond', serif;
-        }
-        .counter-label {
-            margin-top: 12px;
-            color: rgba(255,255,255,0.55);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-weight: 500;
-        }
-        .counter-star {
-            color: var(--gold);
-            font-size: 1.1rem;
-            margin-left: 4px;
-        }
+        .counter-number { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 300; color: var(--gold); line-height: 1; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
+        .counter-prefix { font-size: clamp(1.2rem, 2vw, 1.8rem); color: rgba(200,150,60,0.7); font-family: 'Cormorant Garamond', serif; }
+        .counter-suffix { font-size: clamp(1.2rem, 2vw, 1.8rem); color: rgba(200,150,60,0.7); font-family: 'Cormorant Garamond', serif; }
+        .counter-label { margin-top: 12px; color: rgba(255,255,255,0.55); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 500; }
 
         .gallery-section { padding: 100px 5%; background: white; }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
@@ -138,6 +76,85 @@
         .card { padding: 50px 30px; border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); background: var(--cream); }
         .card:hover { transform: translateY(-10px); border-color: var(--gold); }
         .price { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--gold); margin: 20px 0; font-weight: 300; }
+
+        /* ══════════════════════════════════════
+           SECTION OPTIONS ÉCLAIRAGE
+        ══════════════════════════════════════ */
+        .eclairage-section {
+            padding: 100px 10%;
+            background: #f9f6f2;
+            text-align: center;
+        }
+        .eclairage-tag {
+            color: var(--gold); text-transform: uppercase; letter-spacing: 3px;
+            font-size: 0.75rem; margin-bottom: 15px; display: block;
+        }
+        .eclairage-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 12px;
+        }
+        .eclairage-title em { color: var(--gold); font-style: italic; }
+        .eclairage-sub {
+            color: #5A5A48; font-weight: 300; font-size: 0.95rem; margin-bottom: 50px;
+        }
+
+        .eclairage-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 25px; max-width: 780px; margin: 0 auto 40px;
+        }
+        .eclairage-card {
+            background: white; border: 2px solid rgba(200,150,60,0.15);
+            border-radius: 8px; padding: 40px 30px;
+            position: relative; transition: var(--transition);
+            text-align: left;
+        }
+        .eclairage-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 12px 40px rgba(200,150,60,0.15); }
+        .eclairage-card.recommande { border-color: var(--gold); }
+
+        .ec-badge {
+            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: var(--dark); color: var(--gold);
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; padding: 4px 14px; border-radius: 20px;
+            white-space: nowrap;
+        }
+        .ec-badge.prix {
+            background: var(--gold); color: white; top: -13px; left: auto;
+            right: 20px; transform: none;
+        }
+
+        .ec-icon { font-size: 2.5rem; margin-bottom: 14px; display: block; }
+        .ec-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem; font-weight: 400; margin-bottom: 4px;
+        }
+        .ec-price {
+            color: var(--gold); font-weight: 700; font-size: 1.1rem;
+            margin-bottom: 18px; display: block;
+        }
+        .ec-features { list-style: none; margin-bottom: 25px; }
+        .ec-features li {
+            font-size: 0.83rem; color: #5A5A48; padding: 5px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .ec-features li::before { content: "✦"; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; }
+
+        .ec-btn {
+            display: block; width: 100%; text-align: center;
+            background: var(--dark); color: white;
+            padding: 12px; text-decoration: none;
+            font-family: 'Jost', sans-serif; font-size: 0.78rem;
+            text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;
+            transition: 0.3s; border-radius: 2px; border: none; cursor: pointer;
+        }
+        .ec-btn:hover { background: var(--gold); }
+        .ec-btn.gold { background: var(--gold); }
+        .ec-btn.gold:hover { background: #A07020; }
+
+        .eclairage-note {
+            font-size: 0.78rem; color: #888; font-style: italic;
+        }
 
         .info-block { background: var(--dark); color: white; padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -172,6 +189,8 @@
             .gallery-item { height: 350px; }
             .section { padding: 60px 5%; }
             .grid-3 { grid-template-columns: 1fr; gap: 20px; }
+            .eclairage-section { padding: 60px 5%; }
+            .eclairage-grid { grid-template-columns: 1fr; }
             .info-block { grid-template-columns: 1fr; padding: 60px 8%; gap: 40px; }
             .contact-grid { grid-template-columns: 1fr; }
             .price { font-size: 2.8rem; }
@@ -226,6 +245,7 @@
         <li><a href="#galerie">Galerie</a></li>
         <li><a href="video.html">La Magic Box en action</a></li>
         <li><a href="#formules">Tarifs</a></li>
+        <li><a href="#eclairage">Éclairage</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="calendrier.html" style="color:var(--gold);">📅 Réserver</a></li>
     </ul>
@@ -240,6 +260,7 @@
     <a href="#galerie" onclick="closeMenu()">Galerie</a>
     <a href="video.html" onclick="closeMenu()">La Magic Box en action</a>
     <a href="#formules" onclick="closeMenu()">Tarifs</a>
+    <a href="#eclairage" onclick="closeMenu()">Éclairage</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
     <a href="calendrier.html" onclick="closeMenu()" style="color:var(--gold); font-weight:600;">📅 Réserver</a>
     <a href="tel:0686011346" style="color:var(--gold); font-weight:600;">📞 Appeler</a>
@@ -255,44 +276,22 @@
 </section>
 
 <section class="specs" id="services">
-    <div class="spec-card">
-        <span>📸</span>
-        <h4>Qualité Studio</h4>
-        <p>Appareil photo reflex et éclairage pro.</p>
-    </div>
-    <div class="spec-card">
-        <span>⚡</span>
-        <h4>Vitesse Éclair</h4>
-        <p>Impression thermique en 8 secondes.</p>
-    </div>
-    <div class="spec-card">
-        <span>🌳</span>
-        <h4>Design Chic</h4>
-        <p>Structure artisanale en bois véritable.</p>
-    </div>
+    <div class="spec-card"><span>📸</span><h4>Qualité Studio</h4><p>Appareil photo reflex et éclairage pro.</p></div>
+    <div class="spec-card"><span>⚡</span><h4>Vitesse Éclair</h4><p>Impression thermique en 8 secondes.</p></div>
+    <div class="spec-card"><span>🌳</span><h4>Design Chic</h4><p>Structure artisanale en bois véritable.</p></div>
 </section>
 
-<!-- ══════════════════════════════════════
-     COMPTEUR ANIMÉ
-══════════════════════════════════════ -->
 <section class="counters" id="counters">
-    <div class="counter-item" data-target="50" data-prefix="+" data-suffix="">
-        <div class="counter-number">
-            <span class="counter-prefix">+</span>
-            <span class="counter-val">0</span>
-        </div>
+    <div class="counter-item" data-target="50">
+        <div class="counter-number"><span class="counter-prefix">+</span><span class="counter-val">0</span></div>
         <div class="counter-label">Événements réalisés</div>
     </div>
     <div class="counter-item" data-target="49" data-decimal="true">
-        <div class="counter-number">
-            <span class="counter-val">0</span><span class="counter-suffix">.9 ⭐</span>
-        </div>
+        <div class="counter-number"><span class="counter-val">0</span><span class="counter-suffix">.9 ⭐</span></div>
         <div class="counter-label">Note moyenne clients</div>
     </div>
     <div class="counter-item" data-target="3">
-        <div class="counter-number">
-            <span class="counter-val">0</span>
-        </div>
+        <div class="counter-number"><span class="counter-val">0</span></div>
         <div class="counter-label">Formules disponibles</div>
     </div>
 </section>
@@ -312,24 +311,64 @@
     <h2 style="font-family:'Cormorant Garamond'; font-size:3rem; font-weight:300;">Nos Formules</h2>
     <div class="grid-3">
         <div class="card">
-            <h3>Essentielle</h3>
-            <p>100 Tirages</p>
+            <h3>Essentielle</h3><p>100 Tirages</p>
             <div class="price">230€</div>
             <a href="calendrier.html" style="text-decoration:none; color:var(--gold); font-size:0.8rem; letter-spacing:1px; font-weight:600;">SÉLECTIONNER</a>
         </div>
         <div class="card" style="border-color:var(--gold);">
-            <h3 style="color:var(--gold)">Classique</h3>
-            <p>200 Tirages</p>
+            <h3 style="color:var(--gold)">Classique</h3><p>200 Tirages</p>
             <div class="price">290€</div>
             <a href="calendrier.html" style="text-decoration:none; color:var(--gold); font-size:0.8rem; letter-spacing:1px; font-weight:600;">PLUS POPULAIRE</a>
         </div>
         <div class="card">
-            <h3>Premium</h3>
-            <p>300 Tirages</p>
+            <h3>Premium</h3><p>300 Tirages</p>
             <div class="price">350€</div>
             <a href="calendrier.html" style="text-decoration:none; color:var(--gold); font-size:0.8rem; letter-spacing:1px; font-weight:600;">SÉLECTIONNER</a>
         </div>
     </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     OPTIONS ÉCLAIRAGE
+══════════════════════════════════════ -->
+<section class="eclairage-section" id="eclairage">
+    <span class="eclairage-tag">Options supplémentaires</span>
+    <h2 class="eclairage-title">Sublimez vos photos avec<br>notre <em>éclairage pro</em></h2>
+    <p class="eclairage-sub">À ajouter à votre formule lors de la réservation</p>
+
+    <div class="eclairage-grid">
+
+        <div class="eclairage-card">
+            <span class="ec-badge prix">+30 €</span>
+            <span class="ec-icon">💡</span>
+            <div class="ec-name">Ring Light</div>
+            <span class="ec-price">+30 € / événement</span>
+            <ul class="ec-features">
+                <li>Lumière douce & flatteuse</li>
+                <li>Photos lumineuses et chaleureuses</li>
+                <li>Idéal soirées, mariages, anniversaires</li>
+                <li>Installation rapide — Qualité Premium</li>
+            </ul>
+            <a href="calendrier.html" class="ec-btn">Ajouter lors de la réservation →</a>
+        </div>
+
+        <div class="eclairage-card recommande">
+            <span class="ec-badge">⭐ Recommandé</span>
+            <span class="ec-badge prix">+50 €</span>
+            <span class="ec-icon">🎬</span>
+            <div class="ec-name">Studio Softbox</div>
+            <span class="ec-price">+50 € / événement</span>
+            <ul class="ec-features">
+                <li>Rendu photo professionnel garanti</li>
+                <li>Lumière douce type studio</li>
+                <li>Idéal mariages & soirées d'entreprise</li>
+                <li>Qualité Studio — Effet Waouh garanti ⭐⭐⭐⭐⭐</li>
+            </ul>
+            <a href="calendrier.html" class="ec-btn gold">Ajouter lors de la réservation →</a>
+        </div>
+
+    </div>
+    <p class="eclairage-note">💡 Les options éclairage sont sélectionnables directement dans le formulaire de réservation</p>
 </section>
 
 <div class="info-block" id="contact">
@@ -359,12 +398,10 @@
     © 2026 MAGIC BOX EVENTS — Location Photobooth Île-de-France
 </footer>
 
-<!-- CHATBOT -->
 <button id="mbe-chat-btn" onclick="mbeOpen()" aria-label="Chat">
     <div id="mbe-notif">1</div>
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
 </button>
-
 <div id="mbe-win">
     <div id="mbe-head">
         <div class="mbe-av">✨</div>
@@ -379,170 +416,61 @@
 </div>
 
 <script>
-    function toggleMenu() {
-        document.getElementById('hamburger').classList.toggle('open');
-        document.getElementById('mobileMenu').classList.toggle('open');
-    }
-    function closeMenu() {
-        document.getElementById('hamburger').classList.remove('open');
-        document.getElementById('mobileMenu').classList.remove('open');
-    }
+    function toggleMenu() { document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileMenu').classList.toggle('open'); }
+    function closeMenu() { document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobileMenu').classList.remove('open'); }
 
-    // ── COMPTEUR ANIMÉ AU SCROLL ──
+    // ── COMPTEUR ──
     (function() {
         var counters = document.querySelectorAll('.counter-item');
         var animated = false;
-
         function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
         function animateCounter(el) {
-            var valEl   = el.querySelector('.counter-val');
-            var target  = parseFloat(el.getAttribute('data-target'));
+            var valEl = el.querySelector('.counter-val');
+            var target = parseFloat(el.getAttribute('data-target'));
             var decimal = el.getAttribute('data-decimal') === 'true';
-            var duration = 1800;
-            var start    = null;
-
-            // Pour 4.9 on affiche "4" qui monte puis on remplace par "4.9"
             var displayTarget = decimal ? Math.floor(target / 10) : target;
-
+            var duration = 1800; var start = null;
             function step(ts) {
                 if (!start) start = ts;
                 var progress = Math.min((ts - start) / duration, 1);
-                var eased    = easeOut(progress);
-                var current  = Math.floor(eased * displayTarget);
-                valEl.textContent = decimal ? current : current;
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                } else {
-                    valEl.textContent = decimal ? '4' : displayTarget;
-                    // Pour la note : on affiche 4 puis on ajoute .9 via le suffix déjà en place
-                }
+                var current = Math.floor(easeOut(progress) * displayTarget);
+                valEl.textContent = current;
+                if (progress < 1) { requestAnimationFrame(step); }
+                else { valEl.textContent = decimal ? '4' : displayTarget; }
             }
             requestAnimationFrame(step);
         }
-
         function checkVisible() {
             if (animated) return;
-            var section = document.getElementById('counters');
-            var rect    = section.getBoundingClientRect();
+            var rect = document.getElementById('counters').getBoundingClientRect();
             if (rect.top < window.innerHeight * 0.85) {
                 animated = true;
-                counters.forEach(function(el, i) {
-                    setTimeout(function() {
-                        el.classList.add('visible');
-                        animateCounter(el);
-                    }, i * 150);
-                });
+                counters.forEach(function(el, i) { setTimeout(function() { el.classList.add('visible'); animateCounter(el); }, i * 150); });
             }
         }
-
         window.addEventListener('scroll', checkVisible, { passive: true });
-        checkVisible(); // au cas où déjà visible
+        checkVisible();
     })();
 
     // ── CHATBOT ──
     (function(){
         var WA_NUM = "33686011346";
         var WA_MSG = encodeURIComponent("Bonjour Magic Box Events ! J'aimerais avoir plus d'informations 📸");
-
         var FLOW = {
-            start: {
-                bot: "Bonjour ! 👋 Je suis l'assistant de Magic Box Events.\n\nComment puis-je vous aider ?",
-                choices: [
-                    { label:"💰 Vos tarifs ?",               next:"tarifs"  },
-                    { label:"📅 Comment réserver ?",          next:"reserver"},
-                    { label:"📍 Vous intervenez où ?",         next:"zone"    },
-                    { label:"📸 C'est quoi la Magic Box ?",    next:"concept" },
-                ]
-            },
-            tarifs: {
-                bot: "Nous proposons 3 formules :\n\n✨ Essentielle — 230€\n   100 tirages inclus\n\n📸 Classique — 290€\n   200 tirages inclus\n\n👑 Premium — 350€\n   300 tirages inclus\n\nChaque formule comprend la livraison, l'installation et un hôte/hôtesse.",
-                choices: [
-                    { label:"📅 Je veux réserver !",           next:"reserver"},
-                    { label:"📍 Vous venez dans ma ville ?",    next:"zone"    },
-                    { label:"↩️ Retour au menu",                next:"start"   },
-                ]
-            },
-            reserver: {
-                bot: "C'est simple ! 😊\n\n1️⃣ Allez sur notre page de réservation\n2️⃣ Choisissez votre date disponible\n3️⃣ Remplissez le formulaire\n4️⃣ On vous confirme rapidement par email ou téléphone ✅",
-                choices: [
-                    { label:"📅 Voir les disponibilités",       action:"resa"  },
-                    { label:"💬 Contacter sur WhatsApp",        action:"wa"    },
-                    { label:"↩️ Retour au menu",                next:"start"   },
-                ]
-            },
-            zone: {
-                bot: "Nous intervenons principalement en Île-de-France 📍\n\nDéplacement possible partout en France selon la date et la distance.\n\nContactez-nous pour vérifier votre ville !",
-                choices: [
-                    { label:"💬 Vérifier sur WhatsApp",         action:"wa"    },
-                    { label:"📅 Je veux réserver !",             next:"reserver"},
-                    { label:"↩️ Retour au menu",                next:"start"   },
-                ]
-            },
-            concept: {
-                bot: "La Magic Box est un photobooth nouvelle génération ! 📸✨\n\nVos invités prennent des photos et reçoivent leurs tirages instantanément.\n\nParfait pour :\n💍 Mariages\n🎂 Anniversaires\n🎉 Soirées d'entreprise\n💃 EVJF / EVG",
-                choices: [
-                    { label:"💰 Voir les tarifs",               next:"tarifs"  },
-                    { label:"📅 Réserver une date",             next:"reserver"},
-                    { label:"↩️ Retour au menu",                next:"start"   },
-                ]
-            },
+            start: { bot: "Bonjour ! 👋 Je suis l'assistant de Magic Box Events.\n\nComment puis-je vous aider ?", choices: [{label:"💰 Vos tarifs ?",next:"tarifs"},{label:"📅 Comment réserver ?",next:"reserver"},{label:"📍 Vous intervenez où ?",next:"zone"},{label:"📸 C'est quoi la Magic Box ?",next:"concept"}] },
+            tarifs: { bot: "Nous proposons 3 formules :\n\n✨ Essentielle — 230€ (100 tirages)\n📸 Classique — 290€ (200 tirages)\n👑 Premium — 350€ (300 tirages)\n\nOptions éclairage en supplément :\n💡 Ring Light — +30€\n🎬 Studio Softbox — +50€ ⭐ Recommandé", choices: [{label:"📅 Je veux réserver !",next:"reserver"},{label:"💡 En savoir plus sur l'éclairage",next:"eclairage"},{label:"↩️ Retour au menu",next:"start"}] },
+            eclairage: { bot: "Nos options éclairage subliment vos photos ! ✨\n\n💡 Ring Light (+30€)\nLumière douce & flatteuse — idéal soirées & mariages\n\n🎬 Studio Softbox (+50€) ⭐\nRendu photo professionnel — idéal mariages & entreprises\n\nÀ sélectionner directement dans le formulaire de réservation.", choices: [{label:"📅 Réserver avec une option",action:"resa"},{label:"↩️ Retour au menu",next:"start"}] },
+            reserver: { bot: "C'est simple ! 😊\n\n1️⃣ Allez sur notre page de réservation\n2️⃣ Choisissez votre date disponible\n3️⃣ Remplissez le formulaire\n4️⃣ Ajoutez une option éclairage si souhaité\n5️⃣ On vous confirme rapidement ✅", choices: [{label:"📅 Voir les disponibilités",action:"resa"},{label:"💬 Contacter sur WhatsApp",action:"wa"},{label:"↩️ Retour au menu",next:"start"}] },
+            zone: { bot: "Nous intervenons principalement en Île-de-France 📍\n\nDéplacement possible partout en France selon la date et la distance.", choices: [{label:"💬 Vérifier sur WhatsApp",action:"wa"},{label:"📅 Je veux réserver !",next:"reserver"},{label:"↩️ Retour au menu",next:"start"}] },
+            concept: { bot: "La Magic Box est un photobooth nouvelle génération ! 📸✨\n\nVos invités prennent des photos et reçoivent leurs tirages instantanément.\n\nParfait pour :\n💍 Mariages\n🎂 Anniversaires\n🎉 Soirées d'entreprise\n💃 EVJF / EVG", choices: [{label:"💰 Voir les tarifs",next:"tarifs"},{label:"📅 Réserver une date",next:"reserver"},{label:"↩️ Retour au menu",next:"start"}] },
         };
-
-        var msgs    = document.getElementById('mbe-msgs');
-        var choices = document.getElementById('mbe-choices');
-        var started = false;
-
-        function addMsg(text, who) {
-            var d = document.createElement('div');
-            d.className = 'mbe-m ' + who;
-            d.textContent = text;
-            msgs.appendChild(d);
-            msgs.scrollTop = msgs.scrollHeight;
-        }
-
-        function typing(cb) {
-            var t = document.createElement('div');
-            t.className = 'mbe-typing';
-            t.innerHTML = '<span></span><span></span><span></span>';
-            msgs.appendChild(t);
-            msgs.scrollTop = msgs.scrollHeight;
-            setTimeout(function(){ msgs.removeChild(t); cb(); }, 900);
-        }
-
-        function showStep(key) {
-            var step = FLOW[key];
-            choices.innerHTML = '';
-            typing(function(){
-                addMsg(step.bot, 'bot');
-                step.choices.forEach(function(c){
-                    var btn = document.createElement('button');
-                    btn.className = 'mbe-btn';
-                    btn.textContent = c.label;
-                    if(c.action === 'wa') {
-                        btn.classList.add('green');
-                        btn.onclick = function(){ addMsg(c.label, 'user'); choices.innerHTML = ''; window.open('https://wa.me/' + WA_NUM + '?text=' + WA_MSG, '_blank'); };
-                    } else if(c.action === 'resa') {
-                        btn.classList.add('gold');
-                        btn.onclick = function(){ addMsg(c.label, 'user'); choices.innerHTML = ''; window.location.href = 'calendrier.html'; };
-                    } else {
-                        btn.onclick = function(){ addMsg(c.label, 'user'); showStep(c.next); };
-                    }
-                    choices.appendChild(btn);
-                });
-            });
-        }
-
-        window.mbeOpen = function(){
-            document.getElementById('mbe-notif').style.display = 'none';
-            document.getElementById('mbe-win').classList.add('open');
-            if(!started){ started = true; showStep('start'); }
-        };
-        window.mbeClose = function(){
-            document.getElementById('mbe-win').classList.remove('open');
-        };
-
-        setTimeout(function(){ if(!started) mbeOpen(); }, 4000);
+        var msgs=document.getElementById('mbe-msgs'), choices=document.getElementById('mbe-choices'), started=false;
+        function addMsg(t,w){var d=document.createElement('div');d.className='mbe-m '+w;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+        function typing(cb){var t=document.createElement('div');t.className='mbe-typing';t.innerHTML='<span></span><span></span><span></span>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;setTimeout(function(){msgs.removeChild(t);cb();},900);}
+        function showStep(key){var step=FLOW[key];choices.innerHTML='';typing(function(){addMsg(step.bot,'bot');step.choices.forEach(function(c){var btn=document.createElement('button');btn.className='mbe-btn';btn.textContent=c.label;if(c.action==='wa'){btn.classList.add('green');btn.onclick=function(){addMsg(c.label,'user');choices.innerHTML='';window.open('https://wa.me/'+WA_NUM+'?text='+WA_MSG,'_blank');};}else if(c.action==='resa'){btn.classList.add('gold');btn.onclick=function(){addMsg(c.label,'user');choices.innerHTML='';window.location.href='calendrier.html';};}else{btn.onclick=function(){addMsg(c.label,'user');showStep(c.next);};}choices.appendChild(btn);});});}
+        window.mbeOpen=function(){document.getElementById('mbe-notif').style.display='none';document.getElementById('mbe-win').classList.add('open');if(!started){started=true;showStep('start');}};
+        window.mbeClose=function(){document.getElementById('mbe-win').classList.remove('open');};
+        setTimeout(function(){if(!started)mbeOpen();},4000);
     })();
 </script>
 
